@@ -1,0 +1,36 @@
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe.config
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.pdb
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.Model.dll
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.Model.pdb
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.exe
+C:\Users\Admin\Desktop\Documents\Visual Studio 2017\Projects\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.pdb
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe.config
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.exe
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.pdb
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.pdb
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.Model.dll
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.dll
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.Model.pdb
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.xml
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amancebo\Downloads\TSI_01-20170601T224818Z-001\TSI_01\Cerebro14\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe.config
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.pdb
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.Model.dll
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\Cerebro14.Model.pdb
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.exe
+C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.pdb

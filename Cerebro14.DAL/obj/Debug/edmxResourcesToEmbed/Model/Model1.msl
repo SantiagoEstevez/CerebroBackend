@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CiudadModelStoreContainer" CdmEntityContainer="CiudadEntities">
+    <EntitySetMapping Name="TABacciones">
+      <EntityTypeMapping TypeName="CiudadModel.TABacciones">
+        <MappingFragment StoreEntitySet="TABacciones">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="parametros" ColumnName="parametros" />
+          <ScalarProperty Name="FK_Eve_Lat" ColumnName="FK_Eve_Lat" />
+          <ScalarProperty Name="FK_Eve_Lon" ColumnName="FK_Eve_Lon" />
+          <ScalarProperty Name="FK_email_usu" ColumnName="FK_email_usu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABedificios">
+      <EntityTypeMapping TypeName="CiudadModel.TABedificios">
+        <MappingFragment StoreEntitySet="TABedificios">
+          <ScalarProperty Name="ID_Lat" ColumnName="ID_Lat" />
+          <ScalarProperty Name="ID_Lon" ColumnName="ID_Lon" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABeventos">
+      <EntityTypeMapping TypeName="CiudadModel.TABeventos">
+        <MappingFragment StoreEntitySet="TABeventos">
+          <ScalarProperty Name="ID_Lat" ColumnName="ID_Lat" />
+          <ScalarProperty Name="ID_Lon" ColumnName="ID_Lon" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABusuarios">
+      <EntityTypeMapping TypeName="CiudadModel.TABusuarios">
+        <MappingFragment StoreEntitySet="TABusuarios">
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="fechaN" ColumnName="fechaN" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="FK_Edi_Lat" ColumnName="FK_Edi_Lat" />
+          <ScalarProperty Name="FK_Edi_Lon" ColumnName="FK_Edi_Lon" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
