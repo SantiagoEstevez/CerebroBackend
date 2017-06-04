@@ -13,3 +13,14 @@ C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.Model\bin\Debug\Cerebro14.Model.pd
 C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.Model\obj\Debug\Cerebro14.Model.csprojResolveAssemblyReference.cache
 C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.Model\obj\Debug\Cerebro14.Model.dll
 C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.Model\obj\Debug\Cerebro14.Model.pdb
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\Cerebro14.Model.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\Cerebro14.Model.pdb
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\obj\Debug\Cerebro14.Model.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\obj\Debug\Cerebro14.Model.pdb
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\MongoDB.Bson.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\MongoDB.Driver.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\MongoDB.Bson.xml
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\MongoDB.Driver.xml
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\Debug\MongoDB.Driver.Core.xml

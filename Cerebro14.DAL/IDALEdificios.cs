@@ -9,11 +9,11 @@ namespace Cerebro14.DAL
 {
     public interface IDALEdificios
     {
-        void AddEdificiot(Event e, string ciud);
+        void AddEdificiot(Edificio e, CredentialsDB creden);
 
-        bool EdificioEventByID(double Lat, double Lon, string ciud);
+        bool ExistEdificioByID(double Lat, double Lon, CredentialsDB creden);
 
-        void DeleteEdificio(double Lat, double Lon, string ciud);
+        void DeleteEdificio(double Lat, double Lon, CredentialsDB creden);
 
     }
 }

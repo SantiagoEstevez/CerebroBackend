@@ -9,17 +9,17 @@ namespace Cerebro14.DAL
 {
     public interface IDALAcciones
     {
-        void CreateAction(string IDUser, double Lat, double Lon, int tipo , string param,string ciud);
+        void CreateAction(string IDUser, double Lat, double Lon, int tipo , string param, CredentialsDB creden);
 
         void AddAction(Action a, string ciud);
 
-        List<User> GetAllUserFromEvent(double Lat, double Lon, string ciu);
+        List<User> GetAllUserFromEvent(double Lat, double Lon, CredentialsDB creden);
 
-        List<Event> GetAllEventsFromUser(string IDUser, string ciu);
+        List<Event> GetAllEventsFromUser(string IDUser, CredentialsDB creden);
 
-        void DeleteActionFromEvent(double Lat, double Lon, string ciud);
+        void DeleteActionFromEvent(double Lat, double Lon, CredentialsDB creden);
 
-        void DeleteActionFromUser(string IDUser, string ciu);
+        void DeleteActionFromUser(string IDUser, CredentialsDB creden);
 
     }
 }

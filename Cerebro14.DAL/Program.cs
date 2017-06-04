@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cerebro14.Model;
 using Cerebro14.DAL.Model;
+using Cerebro14.DAL.Mongodb;
 
 namespace Cerebro14.DAL
 {
@@ -12,7 +13,16 @@ namespace Cerebro14.DAL
     {
         static void Main(string[] args)
         {
-            string C2 = "Ciudad02", C3 = "Ciudad03" ,C1 = "Ciudad01";
+
+            
+            //string C2 = "Ciudad02", C3 = "Ciudad03" ,C1 = "Ciudad01";
+
+            CredentialsDB C1 = new CredentialsDB();
+            CredentialsDB C2 = new CredentialsDB();
+            CredentialsDB C3 = new CredentialsDB();
+            C1.NameDbSQL = "Ciudad01";
+            C2.NameDbSQL = "Ciudad02";
+            C3.NameDbSQL = "Ciudad03";
 
             IDALUsuarios intface;
             intface = new DALUsuario();
@@ -21,9 +31,9 @@ namespace Cerebro14.DAL
 
             intedif = new DALEdificios();
             //no ahi edificio asi que probe con evento es lo msomo
-            Event e1, e2;
-            e1 = new Event();
-            e2 = new Event();
+            Edificio e1, e2;
+            e1 = new Edificio();
+            e2 = new Edificio();
 
             e1.Name = "inco";
             e1.Latitude = 150006;
@@ -74,19 +84,106 @@ namespace Cerebro14.DAL
             usu3.Lon_edicicio = 200006;
             usu3.Birthdate = dia;
 
-            // intedif.AddEdificiot(e1, C1);
+
+
+            //intedif.AddEdificiot(e1, C1);
             // intedif.AddEdificiot(e2, C1);
 
-            // intface.AddUser(usu1, C1);
-            //  intface.AddUser(usu2, C1);
-            //  intface.AddUser(usu3, C1);
+            //intface.AddUser(usu1, C1);
+            //intface.AddUser(usu2, C1);
+            // intface.AddUser(usu3, C1);
+
+
             List<User> listusu;
-            listusu = intface.GetAllUserLivingIn(150006,200006, C1);
+            //listusu = intface.GetAllUserLivingIn(150006,200006, C1);
+            listusu = intface.GetAllUser(C1);
+
+
+            IDALEdificios edi = new DALEdificios();
+
+            if (edi.ExistEdificioByID(150006, 200006, C1)){
+
+                Console.Write("**MAL**");
+
+                Console.WriteLine();
+
+            }
+            else
+            {
+                Console.Write("**BIEN**");
+
+                Console.WriteLine();
+
+            }
+
             foreach (var iter in listusu) {
 
                 Console.Write(iter.Email);
                 Console.Write("        *********     ");
             };
+
+            CredentialsDB creden = new CredentialsDB();
+            creden.AddressServerDb = "ds028540.mlab.com";
+            creden.NameDbM = "cerebro201701";
+            creden.NameDbSQL = "Ciudad01";
+            creden.PassDb = "5h5thg5@tgdhfGhuiOu";
+            creden.PortServerDb = 28540;
+            creden.UserDb = "AdminDB";
+           
+
+            DataSensor d1, d2, d3;
+            d1 = new DataSensor();
+            d2 = new DataSensor();
+            d3 = new DataSensor();
+
+            d1.dato = 10;
+            d1.diayHora = DateTime.Now;
+            d1.Latitude = 12500;
+            d1.Longitude = 14000;
+
+            d2.dato = 30;
+            d2.diayHora = DateTime.Now;
+            d2.Latitude = 12000;
+            d2.Longitude = 15000;
+
+            d3.dato = 40;
+            d3.diayHora = DateTime.Now;
+            d3.Latitude = 15000;
+            d3.Longitude = 12000;
+
+
+
+            IDALdatosSensores mondb = new DALdatosSensores();
+
+            mondb.AddDataSensor(d1,creden);
+            mondb.AddDataSensor(d2, creden);
+            mondb.AddDataSensor(d3, creden);
+
+
+
+            Console.Write("**********" + DateTime.Now + "**********");
+
+
+            List<DataSensor> listDaS;
+            listDaS = mondb.GetAllDataSensor(12500, 14000,creden);
+            
+            foreach (var iter in listDaS)
+            {
+
+
+
+                Console.Write("DATO**");
+                Console.Write(iter.dato);
+                Console.Write("FECHA**");
+                Console.Write(iter.diayHora);
+                Console.Write("LAT**");
+                Console.Write(iter.Latitude);
+                Console.Write("LON**");
+                Console.Write(iter.Longitude);
+                Console.WriteLine();
+                
+            };
+            
             Console.Read();
         }
     }

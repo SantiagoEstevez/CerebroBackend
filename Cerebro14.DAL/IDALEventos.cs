@@ -9,11 +9,11 @@ namespace Cerebro14.DAL
 {
     public interface IDALEventos
     {
-        void AddEvent(Event e, string ciud);
+        void AddEvent(Event e, CredentialsDB creden);
 
-        bool ExistEventByID(double Lat, double Lon, string ciud);
+        bool ExistEventByID(double Lat, double Lon, CredentialsDB creden);
 
-        void DeleteUser(double Lat, double Lon, string ciud);
+        void DeleteUser(double Lat, double Lon, CredentialsDB creden);
 
     }
 }

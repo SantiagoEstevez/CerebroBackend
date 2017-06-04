@@ -9,16 +9,18 @@ namespace Cerebro14.DAL
 {
     public interface IDALUsuarios
     {
-        void AddUser(User usu, string ciud);
+        void AddUser(User usu, CredentialsDB creden);
 
-        User GetUserByID(string userID, string ciud);
+        User GetUserByID(string userID, CredentialsDB creden);
 
-        bool ExistUserByID(string userID, string ciud);
+        bool ExistUserByID(string userID, CredentialsDB creden);
 
-        void DeleteUser(string nom, string ciud);
+        void DeleteUser(string nom, CredentialsDB creden);
 
-        void UpdateUser(User usu, string ciud);
+        void UpdateUser(User usu, CredentialsDB creden);
 
-        List<User> GetAllUserLivingIn(double Lat, double Lon, string ciud);
+        List<User> GetAllUser(CredentialsDB creden);
+
+        List<User> GetAllUserLivingIn(double Lat, double Lon, CredentialsDB creden);
     }
 }

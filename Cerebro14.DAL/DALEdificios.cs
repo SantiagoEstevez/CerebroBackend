@@ -11,9 +11,9 @@ namespace Cerebro14.DAL
     public class DALEdificios : IDALEdificios
     {
 
-        public void AddEdificiot(Event e, string ciud) {
+        public void AddEdificiot(Edificio e, CredentialsDB creden) {
 
-            CiudadEntities db = new CiudadEntities(ciud);
+            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
             TABedificios _dbEdi;
 
             _dbEdi = new TABedificios();
@@ -27,12 +27,13 @@ namespace Cerebro14.DAL
 
         }
 
-        public bool EdificioEventByID(double Lat, double Lon, string ciud) {
+        public bool ExistEdificioByID(double Lat, double Lon, CredentialsDB creden) {
 
-            return 5 == 2+3;
+            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+            return db.TABedificios.Any(e => (e.ID_Lat == Lat) && (e.ID_Lon == Lon));
         }
 
-        public void DeleteEdificio(double Lat, double Lon, string ciud) {
+        public void DeleteEdificio(double Lat, double Lon, CredentialsDB creden) {
 
         }
     }
