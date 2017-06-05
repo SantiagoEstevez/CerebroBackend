@@ -12,16 +12,16 @@ namespace Cerebro14.DAL.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class TABacciones
+    public partial class TABsensorEvento
     {
         public int id { get; set; }
-        public int tipo { get; set; }
-        public string parametros { get; set; }
-        public double FK_Eve_Lat { get; set; }
-        public double FK_Eve_Lon { get; set; }
-        public string FK_email_usu { get; set; }
+        public double umbral { get; set; }
+        public double FK_Sensor_Lat { get; set; }
+        public double FK_Sensor_Lon { get; set; }
+        public double FK_Eveto_Lat { get; set; }
+        public double FK_Eveto_Lon { get; set; }
     
         public virtual TABeventos TABeventos { get; set; }
-        public virtual TABusuarios TABusuarios { get; set; }
+        public virtual TABsensor TABsensor { get; set; }
     }
 }

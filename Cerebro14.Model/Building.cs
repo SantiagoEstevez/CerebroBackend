@@ -8,6 +8,6 @@ namespace Cerebro14.Model
 {
     class Building
     {
-        public IEnumerable<Sensor> Sensors { get; set; }
+        public IEnumerable<DataSource> Sensors { get; set; }
     }
 }

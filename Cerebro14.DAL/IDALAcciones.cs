@@ -11,7 +11,7 @@ namespace Cerebro14.DAL
     {
         void CreateAction(string IDUser, double Lat, double Lon, int tipo , string param, CredentialsDB creden);
 
-        void AddAction(Action a, string ciud);
+        void AddAction(Accion a, CredentialsDB creden);
 
         List<User> GetAllUserFromEvent(double Lat, double Lon, CredentialsDB creden);
 

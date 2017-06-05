@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cerebro14.Model.SensorTypes
 {
-    class SensorHumidity : Sensor
+    public class SensorHumidity : DataSource
     {
         public float Humidity { get; set; }
     }

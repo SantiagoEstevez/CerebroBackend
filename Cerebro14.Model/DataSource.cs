@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Cerebro14.Model
 {
-    abstract class DataSource
+    public abstract class DataSource
     {
         public int ID { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public String name { get; set; }
+        public String tipo { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
     }
 }

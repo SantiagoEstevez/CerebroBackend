@@ -31,6 +31,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TABsensor">
+      <EntityTypeMapping TypeName="CiudadModel.TABsensor">
+        <MappingFragment StoreEntitySet="TABsensor">
+          <ScalarProperty Name="ID_Sen_Lat" ColumnName="ID_Sen_Lat" />
+          <ScalarProperty Name="ID_Sen_Lon" ColumnName="ID_Sen_Lon" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABsensorEvento">
+      <EntityTypeMapping TypeName="CiudadModel.TABsensorEvento">
+        <MappingFragment StoreEntitySet="TABsensorEvento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="umbral" ColumnName="umbral" />
+          <ScalarProperty Name="FK_Sensor_Lat" ColumnName="FK_Sensor_Lat" />
+          <ScalarProperty Name="FK_Sensor_Lon" ColumnName="FK_Sensor_Lon" />
+          <ScalarProperty Name="FK_Eveto_Lat" ColumnName="FK_Eveto_Lat" />
+          <ScalarProperty Name="FK_Eveto_Lon" ColumnName="FK_Eveto_Lon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TABusuarios">
       <EntityTypeMapping TypeName="CiudadModel.TABusuarios">
         <MappingFragment StoreEntitySet="TABusuarios">

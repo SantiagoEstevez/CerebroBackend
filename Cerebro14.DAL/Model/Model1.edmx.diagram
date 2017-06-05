@@ -4,14 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8f3d1059815d41a89de4846bccfe7e92" Name="Diagram1">
+      <Diagram DiagramId="12db1954a38a4f0a8af1163ba4ccbaf9" Name="Diagram1">
         <EntityTypeShape EntityType="CiudadModel.TABacciones" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CiudadModel.TABedificios" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CiudadModel.TABeventos" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiudadModel.TABeventos" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiudadModel.TABsensor" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CiudadModel.TABsensorEvento" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CiudadModel.TABusuarios" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="CiudadModel.fk_TABeventos" ManuallyRouted="false" />
         <AssociationConnector Association="CiudadModel.fk_TABusuarios" ManuallyRouted="false" />
         <AssociationConnector Association="CiudadModel.fk_edificio" ManuallyRouted="false" />
+        <AssociationConnector Association="CiudadModel.Fk_TABevento" ManuallyRouted="false" />
+        <AssociationConnector Association="CiudadModel.FK_Sensor" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

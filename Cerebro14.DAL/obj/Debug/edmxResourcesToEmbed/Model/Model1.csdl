@@ -32,6 +32,31 @@
     <Property Name="ID_Lon" Type="Double" Nullable="false" />
     <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="TABacciones" Relationship="Self.fk_TABeventos" FromRole="TABeventos" ToRole="TABacciones" />
+    <NavigationProperty Name="TABsensorEvento" Relationship="Self.Fk_TABevento" FromRole="TABeventos" ToRole="TABsensorEvento" />
+  </EntityType>
+  <EntityType Name="TABsensor">
+    <Key>
+      <PropertyRef Name="ID_Sen_Lat" />
+      <PropertyRef Name="ID_Sen_Lon" />
+    </Key>
+    <Property Name="ID_Sen_Lat" Type="Double" Nullable="false" />
+    <Property Name="ID_Sen_Lon" Type="Double" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TABsensorEvento" Relationship="Self.FK_Sensor" FromRole="TABsensor" ToRole="TABsensorEvento" />
+  </EntityType>
+  <EntityType Name="TABsensorEvento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="umbral" Type="Double" Nullable="false" />
+    <Property Name="FK_Sensor_Lat" Type="Double" Nullable="false" />
+    <Property Name="FK_Sensor_Lon" Type="Double" Nullable="false" />
+    <Property Name="FK_Eveto_Lat" Type="Double" Nullable="false" />
+    <Property Name="FK_Eveto_Lon" Type="Double" Nullable="false" />
+    <NavigationProperty Name="TABeventos" Relationship="Self.Fk_TABevento" FromRole="TABsensorEvento" ToRole="TABeventos" />
+    <NavigationProperty Name="TABsensor" Relationship="Self.FK_Sensor" FromRole="TABsensorEvento" ToRole="TABsensor" />
   </EntityType>
   <EntityType Name="TABusuarios">
     <Key>
@@ -90,10 +115,40 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="Fk_TABevento">
+    <End Role="TABeventos" Type="Self.TABeventos" Multiplicity="1" />
+    <End Role="TABsensorEvento" Type="Self.TABsensorEvento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TABeventos">
+        <PropertyRef Name="ID_Lat" />
+        <PropertyRef Name="ID_Lon" />
+      </Principal>
+      <Dependent Role="TABsensorEvento">
+        <PropertyRef Name="FK_Eveto_Lat" />
+        <PropertyRef Name="FK_Eveto_Lon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sensor">
+    <End Role="TABsensor" Type="Self.TABsensor" Multiplicity="1" />
+    <End Role="TABsensorEvento" Type="Self.TABsensorEvento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TABsensor">
+        <PropertyRef Name="ID_Sen_Lat" />
+        <PropertyRef Name="ID_Sen_Lon" />
+      </Principal>
+      <Dependent Role="TABsensorEvento">
+        <PropertyRef Name="FK_Sensor_Lat" />
+        <PropertyRef Name="FK_Sensor_Lon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="CiudadEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TABacciones" EntityType="Self.TABacciones" />
     <EntitySet Name="TABedificios" EntityType="Self.TABedificios" />
     <EntitySet Name="TABeventos" EntityType="Self.TABeventos" />
+    <EntitySet Name="TABsensor" EntityType="Self.TABsensor" />
+    <EntitySet Name="TABsensorEvento" EntityType="Self.TABsensorEvento" />
     <EntitySet Name="TABusuarios" EntityType="Self.TABusuarios" />
     <AssociationSet Name="fk_TABeventos" Association="Self.fk_TABeventos">
       <End Role="TABeventos" EntitySet="TABeventos" />
@@ -106,6 +161,14 @@
     <AssociationSet Name="fk_edificio" Association="Self.fk_edificio">
       <End Role="TABedificios" EntitySet="TABedificios" />
       <End Role="TABusuarios" EntitySet="TABusuarios" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_TABevento" Association="Self.Fk_TABevento">
+      <End Role="TABeventos" EntitySet="TABeventos" />
+      <End Role="TABsensorEvento" EntitySet="TABsensorEvento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sensor" Association="Self.FK_Sensor">
+      <End Role="TABsensor" EntitySet="TABsensor" />
+      <End Role="TABsensorEvento" EntitySet="TABsensorEvento" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

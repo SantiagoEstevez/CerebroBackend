@@ -12,27 +12,20 @@ namespace Cerebro14.DAL.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class TABusuarios
+    public partial class TABsensor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TABusuarios()
+        public TABsensor()
         {
-            this.TABacciones = new HashSet<TABacciones>();
+            this.TABsensorEvento = new HashSet<TABsensorEvento>();
         }
     
-        public string cedula { get; set; }
+        public double ID_Sen_Lat { get; set; }
+        public double ID_Sen_Lon { get; set; }
+        public string tipo { get; set; }
         public string nombre { get; set; }
-        public string apellido { get; set; }
-        public System.DateTime fechaN { get; set; }
-        public string email { get; set; }
-        public string username { get; set; }
-        public string pass { get; set; }
-        public double FK_Edi_Lat { get; set; }
-        public double FK_Edi_Lon { get; set; }
-        public string telefono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TABacciones> TABacciones { get; set; }
-        public virtual TABedificios TABedificios { get; set; }
+        public virtual ICollection<TABsensorEvento> TABsensorEvento { get; set; }
     }
 }

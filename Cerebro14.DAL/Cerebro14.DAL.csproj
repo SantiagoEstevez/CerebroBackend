@@ -63,6 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDALsensor.cs" />
+    <Compile Include="DALsensor.cs" />
+    <Compile Include="IDALEventoSensor.cs" />
+    <Compile Include="DALEventoSensor.cs" />
     <Compile Include="DALAcciones.cs" />
     <Compile Include="DALEdificios.cs" />
     <Compile Include="DALEventos.cs" />
@@ -95,6 +99,12 @@
     <Compile Include="Model\TABeventos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TABsensor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TABsensorEvento.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TABusuarios.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -123,6 +133,7 @@
       <Name>Cerebro14.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
