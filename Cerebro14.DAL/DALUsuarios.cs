@@ -89,7 +89,7 @@ namespace Cerebro14.DAL
                 {
                     User usu = new User();
 
-                    //usu = new User();
+                    
 
                     usu.Birthdate = _usu.fechaN;
                     usu.CI = _usu.cedula;

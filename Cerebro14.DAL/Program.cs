@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Cerebro14.Model;
 using Cerebro14.DAL.Model;
 using Cerebro14.DAL.Mongodb;
+using Cerebro14.Model.SensorTypes;
 
 namespace Cerebro14.DAL
 {
@@ -183,7 +184,33 @@ namespace Cerebro14.DAL
                 Console.WriteLine();
                 
             };
-            
+
+            DataSource s1, s2, s3,ss1,ss2,ss3;
+            s1 = new SensorTemperature();
+            s2 = new SensorTemperature();
+            s3 = new SensorTemperature();
+            s1.Latitude = 1001;
+            s1.Longitude = 101;
+            s1.name = "sensor 1";
+            s1.tipo = "SensorTemperature";
+
+            s2.Latitude = 1002;
+            s2.Longitude = 102;
+            s2.name = "sensor 2";
+            s2.tipo = "SensorTemperature";
+
+            s3.Latitude = 1003;
+            s3.Longitude = 103;
+            s3.name = "sensor 3";
+            s3.tipo = "SensorTemperature";
+
+            IDALsensor weaSensor = new DALsensor();
+            //weaSensor.AddSensor(s1, creden);
+            //weaSensor.AddSensor(s2, creden);
+            //weaSensor.AddSensor(s3, creden);
+
+            Console.Write(weaSensor.GetSensorByID(1002,102, creden).name);
+
             Console.Read();
         }
     }
