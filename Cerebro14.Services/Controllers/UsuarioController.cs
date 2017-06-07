@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Http.Description;
 using System.Web.Script.Serialization;
 
 namespace Cerebro14.Services.Controllers
@@ -56,6 +57,7 @@ namespace Cerebro14.Services.Controllers
             {
                 Content = new StringContent(jsonEmpleados)
             };
+
             //var json = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(aaa);
             //return json;
             //System.IO.MemoryStream ms = new System.IO.MemoryStream();
@@ -70,24 +72,100 @@ namespace Cerebro14.Services.Controllers
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        [Route("api/Usuario/{id}")]
+        [ResponseType(typeof(User))]
+        [HttpGet]
+        public IHttpActionResult Get(string id)
         {
-            return "value";
+            try
+            {
+                IDALUsuarios Usuarios = new DALUsuario();
+
+                CredentialsDB credDB = CiudadHelper.GetMockCredentials();
+
+                User _usuario = Usuarios.GetUserByID(id, credDB);
+                if(_usuario == null)
+                {
+                    return NotFound();
+                }
+                return Ok(_usuario);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("No se encontro ");
+                throw;
+            }
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        [Route("api/Usuario/{id}")]
+        [ResponseType(typeof(void))]
+        [HttpPost]
+        public IHttpActionResult Post(User usuario)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            IDALUsuarios UsuariosDB = new DALUsuario();
+            UsuariosDB.AddUser(usuario, CiudadHelper.GetMockCredentials());
+
+            return Ok();
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        [Route("api/Usuario/{id}")]
+        [ResponseType(typeof(void))]
+        [HttpPut]
+        public IHttpActionResult Put(string id, User usuario)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != usuario.CI)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                IDALUsuarios UserDB = new DALUsuario();
+                UserDB.UpdateUser(usuario, CiudadHelper.GetMockCredentials());
+            }
+            catch(Exception e)
+            {
+                IDALUsuarios UserDB = new DALUsuario();
+                if (!UserDB.ExistUserByID(id, CiudadHelper.GetMockCredentials()))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // DELETE api/<controller>/5
-        public void Delete(int id)
+        [Route("api/Usuario/{id}")]
+        [ResponseType(typeof(User))]
+        [HttpDelete]
+        public IHttpActionResult Delete(string id)
         {
+            IDALUsuarios dc = new DALUsuario();
+            if(dc.ExistUserByID(id, CiudadHelper.GetMockCredentials()))
+            {
+                return NotFound();
+            }
+
+            dc.DeleteUser(id, CiudadHelper.GetMockCredentials());
+
+            return Ok();
         }
     }
 }

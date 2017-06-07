@@ -54,7 +54,7 @@
   <ItemGroup>
     <Compile Include="Accion.cs" />
     <Compile Include="Building.cs" />
-    <Compile Include="City.cs" />
+    <Compile Include="Ciudad.cs" />
     <Compile Include="CredentialsDB.cs" />
     <Compile Include="DataSensor.cs" />
     <Compile Include="DataSource.cs" />
