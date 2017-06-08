@@ -92,26 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Recursos.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Recursos.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Recursos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Recursos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Recursos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Recursos.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Model\TABacciones.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TABCiudades.cs">
-      <DependentUpon>Recursos.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\TABedificios.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -142,13 +127,6 @@
     <None Include="Model\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="Model\Recursos.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Recursos.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model\Recursos.edmx.diagram">
-      <DependentUpon>Recursos.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +138,6 @@
       <Name>Cerebro14.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -171,16 +148,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\Recursos.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Recursos.edmx</DependentUpon>
-      <LastGenOutput>Recursos.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\Recursos.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Recursos.edmx</DependentUpon>
-      <LastGenOutput>Recursos.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

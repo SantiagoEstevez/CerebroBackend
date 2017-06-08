@@ -8,6 +8,7 @@ namespace Cerebro14.Model
 {
     public class CredentialsDB
     {
+        public int ID { get; set; }
         public string NameCiudad { get; set; }
         public double Ciudad_Lat { get; set; }
         public double Ciudad_Lon { get; set; }

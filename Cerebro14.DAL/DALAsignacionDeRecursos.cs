@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Cerebro14.Model;
 using Cerebro14.DAL.Model;
+using Cerebro14.DAL.Mongodb;
+using Cerebro14.Model.SensorTypes;
 
 namespace Cerebro14.DAL
 {
@@ -12,7 +14,9 @@ namespace Cerebro14.DAL
     {
         public CredentialsDB GetCredencialesCiudad(double Lat, double Lon,string nom) {
 
-        asignacion_de_recursosEntities dbr = new asignacion_de_recursosEntities();
+            CiudadEntities dbr;
+            dbr  = new CiudadEntities("Ciudad01");
+          
             CredentialsDB cred = new CredentialsDB();
 
             if (dbr.TABCiudades.Any(c => (c.ID_Ciu_Lat == Lat && c.ID_Ciu_Lon == Lon)))
@@ -68,9 +72,11 @@ namespace Cerebro14.DAL
         }
         public void SetCredencialesCiudad(CredentialsDB cre, string nam) {
 
-            asignacion_de_recursosEntities dbr = new asignacion_de_recursosEntities();
+            CiudadEntities dbr;
+            dbr = new CiudadEntities("Ciudad01");
 
-            TABCiudades _nuevaCred = new TABCiudades();
+            TABCiudades _nuevaCred;
+            _nuevaCred = new TABCiudades();
 
             _nuevaCred.AddressServerDb = cre.AddressServerDb;
             _nuevaCred.ID_Ciu_Lat = cre.Ciudad_Lat;
@@ -80,10 +86,8 @@ namespace Cerebro14.DAL
             _nuevaCred.NameDbSQL = cre.NameDbSQL;
             _nuevaCred.PassDb = cre.PassDb;
             _nuevaCred.PortServerDb = cre.PortServerDb;
-            _nuevaCred.RecursoLibre = 1;
+            _nuevaCred.RecursoLibre = 1.0;
             _nuevaCred.UserDb = cre.UserDb;
-          
-
 
             dbr.TABCiudades.Add(_nuevaCred);
             dbr.SaveChanges();

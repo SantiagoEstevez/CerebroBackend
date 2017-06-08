@@ -136,7 +136,7 @@ namespace Cerebro14.DAL
             creden.Ciudad_Lon = 101;
 
             IDALAsignacionDeRecursos cred = new DALAsignacionDeRecursos();
-            cred.SetCredencialesCiudad(creden, "sdf");
+           cred.SetCredencialesCiudad(creden, "sdf");
 
 
              DataSensor d1, d2, d3;
@@ -219,7 +219,7 @@ namespace Cerebro14.DAL
             Console.Write(weaSensor.GetSensorByID(1002,102, creden).name);
 
            
-            asignacion_de_recursosEntities dbr = new asignacion_de_recursosEntities();
+            //asignacion_de_recursosEntities dbr = new asignacion_de_recursosEntities();
 
             //dbr.TABCiudades.
 

@@ -13,6 +13,22 @@
     <NavigationProperty Name="TABeventos" Relationship="Self.fk_TABeventos" FromRole="TABacciones" ToRole="TABeventos" />
     <NavigationProperty Name="TABusuarios" Relationship="Self.fk_TABusuarios" FromRole="TABacciones" ToRole="TABusuarios" />
   </EntityType>
+  <EntityType Name="TABCiudades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="RecursoLibre" Type="Double" Nullable="false" />
+    <Property Name="ID_Ciu_Lat" Type="Double" Nullable="false" />
+    <Property Name="ID_Ciu_Lon" Type="Double" Nullable="false" />
+    <Property Name="NameDbSQL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserDb" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PassDb" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NameDbM" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressServerDb" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PortServerDb" Type="Double" Nullable="false" />
+    <Property Name="NameCiudade" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
   <EntityType Name="TABedificios">
     <Key>
       <PropertyRef Name="ID_Lat" />
@@ -145,6 +161,7 @@
   </Association>
   <EntityContainer Name="CiudadEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TABacciones" EntityType="Self.TABacciones" />
+    <EntitySet Name="TABCiudades" EntityType="Self.TABCiudades" />
     <EntitySet Name="TABedificios" EntityType="Self.TABedificios" />
     <EntitySet Name="TABeventos" EntityType="Self.TABeventos" />
     <EntitySet Name="TABsensor" EntityType="Self.TABsensor" />

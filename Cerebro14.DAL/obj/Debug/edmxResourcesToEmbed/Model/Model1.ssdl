@@ -11,6 +11,22 @@
     <Property Name="FK_Eve_Lon" Type="float" Nullable="false" />
     <Property Name="FK_email_usu" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="TABCiudades">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="RecursoLibre" Type="float" Nullable="false" />
+    <Property Name="ID_Ciu_Lat" Type="float" Nullable="false" />
+    <Property Name="ID_Ciu_Lon" Type="float" Nullable="false" />
+    <Property Name="NameDbSQL" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="UserDb" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="PassDb" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="NameDbM" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="AddressServerDb" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="PortServerDb" Type="float" Nullable="false" />
+    <Property Name="NameCiudade" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
   <EntityType Name="TABedificios">
     <Key>
       <PropertyRef Name="ID_Lat" />
@@ -135,6 +151,7 @@
   </Association>
   <EntityContainer Name="CiudadModelStoreContainer">
     <EntitySet Name="TABacciones" EntityType="Self.TABacciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TABCiudades" EntityType="Self.TABCiudades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TABedificios" EntityType="Self.TABedificios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TABeventos" EntityType="Self.TABeventos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TABsensor" EntityType="Self.TABsensor" Schema="dbo" store:Type="Tables" />
