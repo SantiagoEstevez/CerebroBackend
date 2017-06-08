@@ -20,7 +20,7 @@ namespace Cerebro14.DAL.Model
         {
         }
         public CiudadEntities(string connStringName)
-          : base("name=" + connStringName)
+           : base("name=" + connStringName)
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
