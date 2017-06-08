@@ -199,17 +199,17 @@ namespace Cerebro14.DAL
             s1.Latitude = 1001;
             s1.Longitude = 101;
             s1.name = "sensor 1";
-            s1.tipo = "SensorTemperature";
+            s1.Tipo = "SensorTemperature";
 
             s2.Latitude = 1002;
             s2.Longitude = 102;
             s2.name = "sensor 2";
-            s2.tipo = "SensorTemperature";
+            s2.Tipo = "SensorTemperature";
 
             s3.Latitude = 1003;
             s3.Longitude = 103;
             s3.name = "sensor 3";
-            s3.tipo = "SensorTemperature";
+            s3.Tipo = "SensorTemperature";
 
             IDALsensor weaSensor = new DALsensor();
             //weaSensor.AddSensor(s1, creden);

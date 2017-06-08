@@ -10,7 +10,7 @@ namespace Cerebro14.Model
     {
         public int ID { get; set; }
         public String name { get; set; }
-        public String tipo { get; set; }
+        public TipoSensor Tipo { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public double Umbral { get; set; }

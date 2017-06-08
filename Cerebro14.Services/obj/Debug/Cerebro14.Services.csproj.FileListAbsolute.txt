@@ -274,3 +274,5 @@ C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Services\obj\De
 C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Services\obj\Debug\Cerebro14.Services.pdb
 C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Services\bin\EntityFramework.SqlServer.dll
 C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Services\bin\EntityFramework.SqlServer.xml
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Services\bin\EntityFramework.SqlServer.dll
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Services\bin\EntityFramework.SqlServer.xml
