@@ -17,6 +17,10 @@ namespace Cerebro14.DAL
 
         List<Event> GetAllEventsFromUser(string IDUser, CredentialsDB creden);
 
+        Accion GetAcctionFromUserEvent(string IDUser, double Lat, double Lon, CredentialsDB creden);
+
+        List<Accion> GetAllAcctions(CredentialsDB creden);
+
         void DeleteActionFromEvent(double Lat, double Lon, CredentialsDB creden);
 
         void DeleteActionFromUser(string IDUser, CredentialsDB creden);

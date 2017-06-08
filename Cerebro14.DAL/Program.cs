@@ -130,9 +130,16 @@ namespace Cerebro14.DAL
             creden.PassDb = "5h5thg5@tgdhfGhuiOu";
             creden.PortServerDb = 28540;
             creden.UserDb = "AdminDB";
-           
 
-            DataSensor d1, d2, d3;
+            creden.NameCiudad = "mongolin";
+            creden.Ciudad_Lat = 100;
+            creden.Ciudad_Lon = 101;
+
+            IDALAsignacionDeRecursos cred = new DALAsignacionDeRecursos();
+            cred.SetCredencialesCiudad(creden, "sdf");
+
+
+             DataSensor d1, d2, d3;
             d1 = new DataSensor();
             d2 = new DataSensor();
             d3 = new DataSensor();
@@ -210,6 +217,11 @@ namespace Cerebro14.DAL
             //weaSensor.AddSensor(s3, creden);
 
             Console.Write(weaSensor.GetSensorByID(1002,102, creden).name);
+
+           
+            asignacion_de_recursosEntities dbr = new asignacion_de_recursosEntities();
+
+            //dbr.TABCiudades.
 
             Console.Read();
         }

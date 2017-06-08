@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="asignacion_de_recursosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TABCiudades">
+    <Key>
+      <PropertyRef Name="RecursoLibre" />
+      <PropertyRef Name="ID_Ciu_Lat" />
+      <PropertyRef Name="ID_Ciu_Lon" />
+      <PropertyRef Name="NameCiudade" />
+      <PropertyRef Name="NameDbSQL" />
+      <PropertyRef Name="UserDb" />
+      <PropertyRef Name="PassDb" />
+      <PropertyRef Name="NameDbM" />
+      <PropertyRef Name="AddressServerDb" />
+      <PropertyRef Name="PortServerDb" />
+    </Key>
+    <Property Name="RecursoLibre" Type="Double" Nullable="false" />
+    <Property Name="ID_Ciu_Lat" Type="Double" Nullable="false" />
+    <Property Name="ID_Ciu_Lon" Type="Double" Nullable="false" />
+    <Property Name="NameCiudade" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NameDbSQL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserDb" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PassDb" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NameDbM" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressServerDb" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PortServerDb" Type="Double" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="asignacion_de_recursosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TABCiudades" EntityType="Self.TABCiudades" />
+  </EntityContainer>
+</Schema>

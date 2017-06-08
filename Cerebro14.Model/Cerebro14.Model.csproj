@@ -56,6 +56,7 @@
     <Compile Include="Building.cs" />
     <Compile Include="Ciudad.cs" />
     <Compile Include="CredentialsDB.cs" />
+    <Compile Include="DataAccion.cs" />
     <Compile Include="DataSensor.cs" />
     <Compile Include="DataSource.cs" />
     <Compile Include="Edificio.cs" />

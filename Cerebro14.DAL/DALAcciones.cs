@@ -121,6 +121,25 @@ namespace Cerebro14.DAL
 
         }
 
+        public Accion GetAcctionFromUserEvent(string IDUser, double Lat, double Lon, CredentialsDB creden) {
+
+            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+
+            TABacciones _dbAcc;
+            _dbAcc = new TABacciones();
+
+            var _acction = from a in db.TABacciones
+                           where (a.FK_Eve_Lat == Lat && a.FK_Eve_Lon == Lon && a.FK_email_usu == IDUser)
+                           select a;
+            return null;
+            
+        }
+
+        public List<Accion> GetAllAcctions(CredentialsDB creden) {
+
+            return null;
+        }
+
         public void DeleteActionFromEvent(double Lat, double Lon, CredentialsDB creden) {
 
 
