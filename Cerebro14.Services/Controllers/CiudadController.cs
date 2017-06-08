@@ -34,8 +34,12 @@ namespace Cerebro14.Services.Controllers
                     DatabaseInfo = creden
                 };
 
+
+                List<Ciudad> lCiudad = new List<Ciudad>();
+                lCiudad.Add(cui); lCiudad.Add(cui);
+
                 var jsonSerialiser = new JavaScriptSerializer();
-                var jsonEmpleados = jsonSerialiser.Serialize(cui);
+                var jsonEmpleados = jsonSerialiser.Serialize(lCiudad);
 
                 return new HttpResponseMessage()
                 {
