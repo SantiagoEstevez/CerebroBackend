@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cerebro14.Model
 {
-    class Building
+    public class Building
     {
         public IEnumerable<DataSource> Sensors { get; set; }
     }

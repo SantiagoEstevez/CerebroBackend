@@ -50,6 +50,7 @@ namespace Cerebro14.Services.Controllers
 
             List<object> ciudades = new List<object>();
             ciudades.Add(new { nombre = "momo 2", lat = "1", lon = "1" });
+
             var jsonSerialiser = new JavaScriptSerializer();
             var jsonEmpleados = jsonSerialiser.Serialize(ciudades);
 
