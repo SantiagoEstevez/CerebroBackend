@@ -12,7 +12,7 @@ namespace Cerebro14.Model
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
-        //public IEnumerable<Action> Actions { get; set; }
-        //public IEnumerable<DataSource> DataSources{get;set;}
+        public IEnumerable<Action> Actions { get; set; }
+        public IEnumerable<DataSource> DataSources{get;set;}
     }
 }
