@@ -13,6 +13,6 @@ namespace Cerebro14.Model
         public String tipo { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-
+        public double Umbral { get; set; }
     }
 }
