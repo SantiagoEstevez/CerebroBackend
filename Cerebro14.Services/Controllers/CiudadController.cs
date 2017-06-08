@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using System.Web.Script.Serialization;
 
 namespace Cerebro14.Services.Controllers
 {
@@ -14,10 +15,7 @@ namespace Cerebro14.Services.Controllers
     public class CiudadController : ApiController
     {
         // GET: api/Ciudad
-        [Route("api/Ciudad/{id}")]
-        [ResponseType(typeof(Ciudad))]
-        [HttpGet]
-        public IHttpActionResult Get()
+        public HttpResponseMessage Get()
         {
             try
             {
@@ -28,8 +26,6 @@ namespace Cerebro14.Services.Controllers
                 creden.PortServerDb = 28540;
                 creden.UserDb = "AdminDB";
 
-                //IDALCiudad DBCiudad = new IDALECiudad();
-
                 Ciudad cui = new Ciudad()
                 {
                     Nombre = "Petevideo",
@@ -37,7 +33,14 @@ namespace Cerebro14.Services.Controllers
                     Latitud = (float)-56.16453139999999,                    
                     DatabaseInfo = creden
                 };
-                return Ok(cui);
+
+                var jsonSerialiser = new JavaScriptSerializer();
+                var jsonEmpleados = jsonSerialiser.Serialize(cui);
+
+                return new HttpResponseMessage()
+                {
+                    Content = new StringContent(jsonEmpleados)
+                };
             }
             catch (Exception e)
             {
