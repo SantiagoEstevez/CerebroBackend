@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 
 namespace Cerebro14.Services
 {
@@ -11,6 +12,9 @@ namespace Cerebro14.Services
         {
             // Configuración y servicios de API web
             config.EnableCors();
+
+            // Use camel case for JSON data.
+            //config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             // Rutas de API web
             config.MapHttpAttributeRoutes();

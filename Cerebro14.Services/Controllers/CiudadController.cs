@@ -15,7 +15,10 @@ namespace Cerebro14.Services.Controllers
     public class CiudadController : ApiController
     {
         // GET: api/Ciudad
-        public HttpResponseMessage Get()
+        [Route("api/Ciudad")]
+        [ResponseType(typeof(List<Ciudad>))]
+        [HttpGet]
+        public IHttpActionResult Get()
         {
             try
             {
@@ -41,14 +44,20 @@ namespace Cerebro14.Services.Controllers
                 var jsonSerialiser = new JavaScriptSerializer();
                 var jsonEmpleados = jsonSerialiser.Serialize(lCiudad);
 
+                return Json(lCiudad);
+
+                //return NotFound();
+                
+                /*
                 return new HttpResponseMessage()
                 {
                     Content = new StringContent(jsonEmpleados)
                 };
+                */
             }
             catch (Exception e)
             {
-                Console.WriteLine("No se puedo enviar la ciudad");
+                Console.WriteLine("No se puedo enviar la ciudad: " + e.Message);
                 throw;
             }
         }
