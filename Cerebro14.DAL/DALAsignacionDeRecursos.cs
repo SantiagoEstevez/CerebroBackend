@@ -36,10 +36,7 @@ namespace Cerebro14.DAL
                     cred.PassDb = _ciud.PassDb;
                     cred.PortServerDb = _ciud.PortServerDb;
                     cred.UserDb = _ciud.UserDb;
-                    
-
-                }
-                
+                }                
             }
             else
             {
