@@ -36,32 +36,42 @@ namespace Cerebro14.DAL
                     cred.PassDb = _ciud.PassDb;
                     cred.PortServerDb = _ciud.PortServerDb;
                     cred.UserDb = _ciud.UserDb;
-                }                
+                    
+
+                }
+                
             }
             else
             {
              var Ciudad = from c in dbr.TABCiudades
-                        where (c.RecursoLibre == 0)
+                        where (c.RecursoLibre == 0.0)
                          select c;
 
-             bool unavez = true;
 
-             foreach (var _ciud in Ciudad)
-                {
-                    if (unavez) {
-                    unavez = false;
+                TABCiudades _nuevaCred, _ciud;
+                _nuevaCred = new TABCiudades();
+                TABCiudades aborrar;
+                _ciud = Ciudad.First();
 
-                        _ciud.RecursoLibre = 1;
-                        _ciud.ID_Ciu_Lat = Lat;
-                        _ciud.ID_Ciu_Lon = Lon;
-                        _ciud.NameCiudade = nom;
+                _nuevaCred.AddressServerDb = _ciud.AddressServerDb;
+                _nuevaCred.RecursoLibre = 1.0;
+                _nuevaCred.ID_Ciu_Lat = Lat;
+                _nuevaCred.ID_Ciu_Lon = Lon;
+                _nuevaCred.NameCiudade = nom;
+                _nuevaCred.NameDbM = _ciud.NameDbM;
+                _nuevaCred.NameDbSQL = _ciud.NameDbSQL;
+                _nuevaCred.PassDb = _ciud.PassDb;
+                _nuevaCred.PortServerDb = _ciud.PortServerDb;
+                _nuevaCred.UserDb = _ciud.UserDb;
 
-        
-                        dbr.TABCiudades.Add(_ciud);
-                        dbr.SaveChanges();
-                    }
-                }
+                aborrar = dbr.TABCiudades.Find(_ciud.id);
+                dbr.TABCiudades.Add(_nuevaCred);
+                dbr.SaveChanges();
 
+                dbr.TABCiudades.Remove(aborrar);
+                dbr.SaveChanges();
+                
+               
             }
             return cred;
 
@@ -76,14 +86,14 @@ namespace Cerebro14.DAL
             _nuevaCred = new TABCiudades();
 
             _nuevaCred.AddressServerDb = cre.AddressServerDb;
-            _nuevaCred.ID_Ciu_Lat = cre.Ciudad_Lat;
-            _nuevaCred.ID_Ciu_Lon = cre.Ciudad_Lon;
+            _nuevaCred.ID_Ciu_Lat = 0.0;
+            _nuevaCred.ID_Ciu_Lon = 0.0;
             _nuevaCred.NameCiudade = cre.NameCiudad;
             _nuevaCred.NameDbM = cre.NameDbM;
             _nuevaCred.NameDbSQL = cre.NameDbSQL;
             _nuevaCred.PassDb = cre.PassDb;
             _nuevaCred.PortServerDb = cre.PortServerDb;
-            _nuevaCred.RecursoLibre = 1.0;
+            _nuevaCred.RecursoLibre = 0.0;
             _nuevaCred.UserDb = cre.UserDb;
 
             dbr.TABCiudades.Add(_nuevaCred);

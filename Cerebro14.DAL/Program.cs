@@ -136,10 +136,32 @@ namespace Cerebro14.DAL
             creden.Ciudad_Lon = 101;
 
             IDALAsignacionDeRecursos cred = new DALAsignacionDeRecursos();
-           cred.SetCredencialesCiudad(creden, "sdf");
 
+           
 
-             DataSensor d1, d2, d3;
+            CredentialsDB creden2 = new CredentialsDB();
+            creden2.AddressServerDb = "ds163301.mlab.com";
+            creden2.NameDbM = "cerebro201702";
+            creden2.NameDbSQL = "Ciudad02";
+            creden2.PassDb = "5h5thg5@tgdhfGhuiOu";
+            creden2.PortServerDb = 63301;
+            creden2.UserDb = "AdminDB";
+
+            creden2.NameCiudad = "mongolin2";
+            creden2.Ciudad_Lat = 100;
+            creden2.Ciudad_Lon = 101;
+
+            IDALAsignacionDeRecursos coso = new DALAsignacionDeRecursos();
+            //coso.SetCredencialesCiudad(creden2, "mongolin2");
+            //cred.SetCredencialesCiudad(creden, "sdf");
+
+            CredentialsDB creden1test = new CredentialsDB();
+            creden1test = coso.GetCredencialesCiudad(100, 101, "mongolin");
+            Console.Write("**********");
+            Console.Write(creden1test.NameDbM);
+            Console.Write("**********");
+            
+            DataSensor d1, d2, d3;
             d1 = new DataSensor();
             d2 = new DataSensor();
             d3 = new DataSensor();
@@ -218,10 +240,11 @@ namespace Cerebro14.DAL
 
             Console.Write(weaSensor.GetSensorByID(1002,102, creden).name);
 
-           
+
             //asignacion_de_recursosEntities dbr = new asignacion_de_recursosEntities();
 
             //dbr.TABCiudades.
+
 
             Console.Read();
         }
