@@ -7,11 +7,50 @@ using Cerebro14.Model;
 using Cerebro14.DAL.Model;
 using Cerebro14.DAL.Mongodb;
 using Cerebro14.Model.SensorTypes;
+using System.Threading;
 
 namespace Cerebro14.DAL
 {
     class Program
     {
+        static void Main(string[] args)
+        {
+          
+
+            
+
+
+
+
+            MagiaMagia magia1 = new MagiaMagia(20, 200, "Mongolin_1");
+            Thread magia1Thread = new Thread(magia1.magiausuarios);
+
+            // Start the worker thread.
+            magia1Thread.Start();
+
+            MagiaMagia magia2 = new MagiaMagia(1000, 1414, "Mongolin_2");
+            Thread magia2Thread = new Thread(magia2.magiausuarios);
+
+            // Start the worker thread.
+            magia2Thread.Start();
+
+            Console.Read();
+            Console.Read();
+
+        }
+
+
+
+
+
+        
+
+
+
+
+
+
+        /*
         static void Main(string[] args)
         {
 
@@ -152,13 +191,13 @@ namespace Cerebro14.DAL
             creden2.Ciudad_Lon = 101;
 
             IDALAsignacionDeRecursos coso = new DALAsignacionDeRecursos();
-            //coso.SetCredencialesCiudad(creden2, "mongolin2");
-            //cred.SetCredencialesCiudad(creden, "sdf");
+            coso.SetCredencialesCiudad(creden2, "mongolin2");
+            cred.SetCredencialesCiudad(creden, "sdf");
 
             CredentialsDB creden1test = new CredentialsDB();
-            creden1test = coso.GetCredencialesCiudad(100, 101, "mongolin");
+           // creden1test = coso.GetCredencialesCiudad(100, 101, "mongolin");
             Console.Write("**********");
-            Console.Write(creden1test.NameDbM);
+           // Console.Write(creden1test.NameDbM);
             Console.Write("**********");
             
             DataSensor d1, d2, d3;
@@ -247,6 +286,9 @@ namespace Cerebro14.DAL
 
 
             Console.Read();
-        }
+        } */
+
+
+
     }
 }
