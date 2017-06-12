@@ -10,10 +10,10 @@ namespace FrontOffice
     {
         static void Main(string[] args)
         {
-            Thread t = new Thread(myFun);
+            /*Thread t = new Thread(myFun);
             t.Name = "Thread1";
             t.IsBackground = false;
-            t.Start();
+            t.Start();*/
             Console.WriteLine("Main thread Running");
             Console.ReadKey();
         }
