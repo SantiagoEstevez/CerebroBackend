@@ -34,6 +34,7 @@ C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\bin\Debug\EntityFramework.SqlS
 C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.csprojResolveAssemblyReference.cache
 C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.exe
 C:\Users\Santiago\Desktop\Cerebro14\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.pdb
+<<<<<<< HEAD
 C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe.config
 C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe
 C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.pdb
@@ -53,3 +54,24 @@ C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.DAL\bin\Debug\M
 C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.exe
 C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.pdb
+=======
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.csprojResolveAssemblyReference.cache
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.exe
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\obj\Debug\Cerebro14.DAL.pdb
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe.config
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.exe
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.DAL.pdb
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.Model.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\EntityFramework.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\MongoDB.Bson.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\MongoDB.Driver.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\Cerebro14.Model.pdb
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\EntityFramework.xml
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\MongoDB.Bson.xml
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\MongoDB.Driver.xml
+C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\bin\Debug\MongoDB.Driver.Core.xml
+>>>>>>> 4eaf529e632ce4f636f73b4461884ab344e90421
