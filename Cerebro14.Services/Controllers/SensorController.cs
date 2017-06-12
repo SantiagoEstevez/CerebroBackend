@@ -13,15 +13,30 @@ namespace Cerebro14.Services.Controllers
     {
         // GET: api/Sensor
         [Route("api/Sensor"), HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(double lat, double lon)
         {
-            IDALsensor dalSensor = new DALsensor();
+            try
+            {
+                IDALsensor dalSensor = new DALsensor();
 
-            CredentialsDB creden = CiudadHelper.GetMockCredentials();
+                IDALAsignacionDeRecursos AR = new DALAsignacionDeRecursos();
+                CredentialsDB creden = AR.GetCredencialesCiudad(lat, lon, "nombreRandom");
+                //CredentialsDB creden = CiudadHelper.GetMockCredentials();
+                var sensores = dalSensor.GetAllSensor(creden);
+                if (!sensores.Any())
+                {
+                    return NotFound();
+                }                
 
-            var sensores = dalSensor.GetAllSensor(creden);
+                return Ok(sensores);
+            }
+            catch(Exception e)
+            {
+                //Guardar en log error
+                return InternalServerError();
+                throw;
+            }
 
-            return Ok(sensores);
         }
 
         // GET: api/Sensor/5

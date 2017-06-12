@@ -72,6 +72,20 @@ namespace Cerebro14.Services.Controllers
             //return lUser;//DALUser.GetAllUserLivingIn(150006, 200006, "Ciudad01");
         }
 
+        [Route("api/Usuario/Login")]
+        [HttpPost]
+        public IHttpActionResult Login(User user)
+        {
+            IDALUsuarios dalUsu = new DALUsuario();
+            
+            if (!ModelState.IsValid /*&& dalUsu.ExistUserByID(user.CI)*/)
+            {
+                return NotFound();
+            }
+            
+            return Ok(CiudadHelper.CreateToken24hrs());
+        }
+
         // GET api/<controller>/5
         [Route("api/Usuario/{id}")]
         [ResponseType(typeof(User))]
