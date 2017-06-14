@@ -17,13 +17,11 @@ namespace Cerebro14.Services.Controllers
     public class CiudadController : ApiController
     {
         // GET: api/Ciudad
-        [Route("api/Ciudad"), HttpGet]
+        [HttpGet, Route("api/Ciudad")]
         public IHttpActionResult Get()
         {
             try
             {
-
-
                 //CredentialsDB creden = CiudadHelper.GetMockCredentials();
 
                 //Ciudad cui = new Ciudad()
@@ -52,30 +50,22 @@ namespace Cerebro14.Services.Controllers
         }
 
         // GET: api/Ciudad/5
-        [Route("api/Ciudad/{id}"), HttpGet]
+        [HttpGet, Route("api/Ciudad/latitud/{latitud}/longitud/{longitud}")]
         public IHttpActionResult Get(double latitud, double longitud)
         {
             try
             {
-                IDALAsignacionDeRecursos nuevaCiudad = new DALAsignacionDeRecursos();
+                IDALAsignacionDeRecursos ADR = new DALAsignacionDeRecursos();
+                ADR.GetCredencialesCiudad(latitud, longitud, "");
+                //nuevaCiudad.TodasLasCiudades();                
 
-                CredentialsDB ciudad = nuevaCiudad.GetCredencialesCiudad(latitud, longitud, "falso");
-                //CredentialsDB creden = CiudadHelper.GetMockCredentials();
-
-                //Ciudad cui = new Ciudad()
+                //if (lCiudades.Any() == null)
                 //{
-                //    Nombre = "Petevideo",
-                //    Longitud = (float)-34.9011127,
-                //    Latitud = (float)-56.16453139999999,
-                //    DatabaseInfo = creden
-                //};
+                //    return NotFound();
+                //}
 
-                if (ciudad == null)
-                {
-                    return NotFound();
-                }
-
-                return Json(ciudad);
+                //return Json(lCiudades);
+                return Ok();
             }
             catch (Exception e)
             {
