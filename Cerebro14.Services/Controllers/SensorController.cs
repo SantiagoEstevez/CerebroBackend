@@ -11,53 +11,91 @@ namespace Cerebro14.Services.Controllers
 {
     public class SensorController : ApiController
     {
-        // GET: api/Sensor
-        [Route("api/Sensor"), HttpGet]
-        public IHttpActionResult Get(double lat, double lon)
+        [HttpGet, Route("api/Sensor/CiudadLatitud/{latCiudad}/CiudadLongitud/{lonCiudad}")]
+        public IHttpActionResult Get(double latCiudad, double lonCiudad)
         {
             try
             {
                 IDALsensor dalSensor = new DALsensor();
 
                 IDALAsignacionDeRecursos AR = new DALAsignacionDeRecursos();
-                CredentialsDB creden = AR.GetCredencialesCiudad(lat, lon, "nombreRandom");
-                //CredentialsDB creden = CiudadHelper.GetMockCredentials();
-                var sensores = dalSensor.GetAllSensor(creden);
-                if (!sensores.Any())
+                CredentialsDB city = AR.GetCredencialesCiudad(latCiudad, lonCiudad, "");
+                List<DataSource> lSensores = dalSensor.GetAllSensor(city);
+                
+                if (!lSensores.Any())
                 {
                     return NotFound();
                 }                
 
-                return Ok(sensores);
+                return Json(lSensores);
             }
             catch(Exception e)
             {
-                //Guardar en log error
-                return InternalServerError();
-                throw;
+                Console.WriteLine("Error al buscar sensores para la ciudad seleccionada: " + e.Message);
+                return InternalServerError();                
             }
-
         }
 
-        // GET: api/Sensor/5
-        public string Get(int id)
+        [HttpPost, Route("api/Sensor")]
+        public IHttpActionResult Post(DataSource newSensor, Ciudad inCity)
         {
-            return "value";
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                IDALsensor sensorContext = new DALsensor();
+                IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
+
+                CredentialsDB city = cityContext.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, "");
+                if (city == null)
+                {
+                    return BadRequest("No existe ciudad");
+                }
+
+                sensorContext.AddSensor(newSensor, city);
+
+                return Ok();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error al crear sensor: " + e.Message);
+                return InternalServerError();
+            } 
         }
 
-        // POST: api/Sensor
-        public void Post([FromBody]string value)
-        {
-        }
+        //// PUT: api/Sensor/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
-        // PUT: api/Sensor/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //[HttpDelete, Route("api/Sensor")]
+        //public IHttpActionResult Delete(DataSource sensor, Ciudad inCity)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest();
+        //    }
 
-        // DELETE: api/Sensor/5
-        public void Delete(int id)
-        {
-        }
+        //    IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
+        //    CredentialsDB city = cityContext.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, inCity.Nombre);
+
+        //    if(city == null)
+        //    {
+        //        return BadRequest("No existe ciudad");
+        //    }
+
+        //    IDALsensor sensorContext = new DALsensor();
+        //    DataSource sensorToCheck = sensorContext.GetSensorByID(sensor.Latitude, sensor.Longitude, city);
+
+        //    if(sensorToCheck == null)
+        //    {
+        //        return BadRequest("No existe sensor");
+        //    }
+
+        //    sensorContext.
+        //}
     }
 }

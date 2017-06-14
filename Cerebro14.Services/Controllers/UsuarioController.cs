@@ -17,169 +17,121 @@ namespace Cerebro14.Services.Controllers
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class UsuarioController : ApiController
     {
-        // GET api/<controller>
-        //[HttpGet]
-        public HttpResponseMessage Get()
-        {
-            User usu1 = new User();
-
-            DateTime dia = new DateTime(1989, 12, 5);
-
-            usu1.CI = "48563787";
-            usu1.Email = "www.damian17@gmail.com";
-            usu1.Lastname = "carancho";
-            usu1.Name = "Damian";
-            usu1.Password = "magiamagiamagia";
-            usu1.Phone = "094202125";
-            usu1.Username = "D4m14n";
-            usu1.Lat_edicicio = 150006;
-            usu1.Lon_edicicio = 200006;
-            usu1.Birthdate = dia;
-
-            List<User> lUser = new List<User>()
-            {
-                usu1,
-            };
-
-            object[] x = new object[2];
-
-            x[0] = new { nombre = "momo 2", lat = "1", lon = "1" };
-            x[1] = new { nombre = "momo", lat = "1", lon = "1" };
-
-            IDALUsuarios DALUser = new DALUsuario();
-
-            List<object> ciudades = new List<object>();
-            ciudades.Add(new { nombre = "momo 2", lat = "1", lon = "1" });
-
-            var jsonSerialiser = new JavaScriptSerializer();
-            var jsonEmpleados = jsonSerialiser.Serialize(ciudades);
-
-            return new HttpResponseMessage()
-            {
-                Content = new StringContent(jsonEmpleados)
-            };
-
-            //var json = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(aaa);
-            //return json;
-            //System.IO.MemoryStream ms = new System.IO.MemoryStream();
-
-            //DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<User>));
-            //ser.WriteObject(ms, lUser);
-            //byte[] json = ms.ToArray();
-            //ms.Close();
-            //return Encoding.UTF8.GetString(json, 0, json.Length);
-
-            //return lUser;//DALUser.GetAllUserLivingIn(150006, 200006, "Ciudad01");
-        }
-
-        [Route("api/Usuario/Login")]
-        [HttpPost]
-        public IHttpActionResult Login(User user)
+        [HttpPost, Route("api/Usuario/Login")]        
+        public IHttpActionResult LoginBackend(User user)
         {
             IDALUsuarios dalUsu = new DALUsuario();
             
-            if (!ModelState.IsValid /*&& dalUsu.ExistUserByID(user.CI)*/)
+            if (!ModelState.IsValid)
             {
                 return NotFound();
-            }
+            }            
             
-            return Ok(CiudadHelper.CreateToken24hrs());
+            //Checkear si existe admin con esa cedula o lo que sea
+
+            return Json(CiudadHelper.CreateToken24hrs());
         }
 
         // GET api/<controller>/5
-        [Route("api/Usuario/{id}")]
-        [ResponseType(typeof(User))]
-        [HttpGet]
-        public IHttpActionResult Get(string id)
+        [HttpGet, Route("api/Usuario/{ci}/CiudadLat/{cityLat}/CiudadLon/{cityLon}")]
+        public IHttpActionResult Get(string ci, double cityLat, double cityLon)
         {
             try
             {
-                IDALUsuarios Usuarios = new DALUsuario();
+                IDALUsuarios userContext = new DALUsuario();
+                IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
 
-                CredentialsDB credDB = CiudadHelper.GetMockCredentials();
+                CredentialsDB city = cityContext.GetCredencialesCiudad(cityLat, cityLon, ""); 
+                if(city == null)
+                {
+                    return BadRequest();
+                }
 
-                User _usuario = Usuarios.GetUserByID(id, credDB);
-                if(_usuario == null)
+                User usuario = userContext.GetUserByID(ci, city);
+                if(usuario == null)
                 {
                     return NotFound();
                 }
-                return Ok(_usuario);
+
+                return Json(usuario);
             }
             catch(Exception e)
             {
-                Console.WriteLine("No se encontro ");
-                throw;
+                Console.WriteLine("No se encontro usuario: " + e.Message);
+                return InternalServerError();
             }
         }
 
         // POST api/<controller>
-        [Route("api/Usuario/{id}")]
-        [ResponseType(typeof(void))]
-        [HttpPost]
-        public IHttpActionResult Post(User usuario)
+        [HttpPost, Route("api/Usuario")]
+        public IHttpActionResult Post(User usuario, Ciudad inCity)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            IDALUsuarios UsuariosDB = new DALUsuario();
-            UsuariosDB.AddUser(usuario, CiudadHelper.GetMockCredentials());
+            IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
+            CredentialsDB city = cityContext.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, "");
+            if(city == null)
+            {
+                return BadRequest("No existe ciudad");
+            }
 
+            IDALUsuarios userContext = new DALUsuario();
+            if (!userContext.ExistUserByID(usuario.CI, city))
+            {
+                return BadRequest("No existe usuario en ciudad");
+            }
+
+            userContext.AddUser(usuario, city);
             return Ok();
         }
 
         // PUT api/<controller>/5
-        [Route("api/Usuario/{id}")]
-        [ResponseType(typeof(void))]
-        [HttpPut]
-        public IHttpActionResult Put(string id, User usuario)
+        [HttpPut, Route("api/Usuario")]
+        public IHttpActionResult Put(User usuario, Ciudad inCity)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != usuario.CI)
+            IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
+            CredentialsDB city = cityContext.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, "");
+            if (city == null)
             {
-                return BadRequest();
+                return BadRequest("No existe ciudad");
             }
 
-            try
+            IDALUsuarios userContext = new DALUsuario();
+            if (!userContext.ExistUserByID(usuario.CI, city))
             {
-                IDALUsuarios UserDB = new DALUsuario();
-                UserDB.UpdateUser(usuario, CiudadHelper.GetMockCredentials());
-            }
-            catch(Exception e)
-            {
-                IDALUsuarios UserDB = new DALUsuario();
-                if (!UserDB.ExistUserByID(id, CiudadHelper.GetMockCredentials()))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest("No existe usuario en ciudad");
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            userContext.UpdateUser(usuario, city);
+            return Ok();
         }
 
         // DELETE api/<controller>/5
-        [Route("api/Usuario/{id}")]
-        [ResponseType(typeof(User))]
-        [HttpDelete]
-        public IHttpActionResult Delete(string id)
+        [HttpDelete, Route("api/Usuario/{ci}")]
+        public IHttpActionResult Delete(string ci, Ciudad inCity)
         {
-            IDALUsuarios dc = new DALUsuario();
-            if(dc.ExistUserByID(id, CiudadHelper.GetMockCredentials()))
+            IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
+            CredentialsDB city = cityContext.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, "");
+            if (city == null)
+            {
+                return BadRequest("No existe ciudad");
+            }
+
+            IDALUsuarios userContext = new DALUsuario();
+            if(!userContext.ExistUserByID(ci, city))
             {
                 return NotFound();
             }
 
-            dc.DeleteUser(id, CiudadHelper.GetMockCredentials());
-
+            userContext.DeleteUser(ci, city);
             return Ok();
         }
     }

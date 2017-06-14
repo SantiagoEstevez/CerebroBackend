@@ -16,134 +16,124 @@ namespace Cerebro14.Services.Controllers
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class CiudadController : ApiController
     {
-        // GET: api/Ciudad
         [HttpGet, Route("api/Ciudad")]
         public IHttpActionResult Get()
         {
             try
             {
-                //CredentialsDB creden = CiudadHelper.GetMockCredentials();
+                //Pedir todas las ciudades a la DAL
+                List<Ciudad> allCiudades = new List<Ciudad>();
 
-                //Ciudad cui = new Ciudad()
-                //{
-                //    Nombre = "Petevideo",
-                //    Longitud = (float)-34.9011127,
-                //    Latitud = (float)-56.16453139999999,
-                //    DatabaseInfo = creden
-                //};
-
-                //List<Ciudad> lCiudad = new List<Ciudad>();
-                //lCiudad.Add(cui); lCiudad.Add(cui);
-
-                //if (!lCiudad.Any())
+                //if (!allCiudades.Any())
                 //{
                 //    return NotFound();
                 //}
 
-                return Ok();
+                return Json(allCiudades);
             }
             catch (Exception e)
             {
-                Console.WriteLine("No se puedo enviar la ciudad: " + e.Message);
-                return NotFound();
+                Console.WriteLine("Error la buscar ciudades: " + e.Message);
+                return InternalServerError();
             }
         }
-
-        // GET: api/Ciudad/5
+        
         [HttpGet, Route("api/Ciudad/latitud/{latitud}/longitud/{longitud}")]
         public IHttpActionResult Get(double latitud, double longitud)
         {
             try
             {
                 IDALAsignacionDeRecursos ADR = new DALAsignacionDeRecursos();
-                ADR.GetCredencialesCiudad(latitud, longitud, "");
-                //nuevaCiudad.TodasLasCiudades();                
+                
+                CredentialsDB cred = ADR.GetCredencialesCiudad(latitud, longitud, ""); //Al pedir la ciudad el parametro nombre no hace nada
 
-                //if (lCiudades.Any() == null)
-                //{
-                //    return NotFound();
-                //}
+                if (cred == null)
+                {
+                    return NotFound();
+                }
 
-                //return Json(lCiudades);
-                return Ok();
+                Ciudad city = new Ciudad()
+                {
+                    Nombre = cred.NameCiudad,
+                    Latitud = cred.Ciudad_Lat,
+                    Longitud = cred.Ciudad_Lon
+                };             
+
+                return Json(city);                
             }
             catch (Exception e)
             {
-                Console.WriteLine("No se puedo enviar la ciudad: " + e.Message);
-                return NotFound();
+                Console.WriteLine("Error al intentar devolver ciudad: " + e.Message);
+                return InternalServerError();
             }
         }
-
-        // POST: api/Ciudad
-        [Route("api/Ciudad"), HttpPost]
+        
+        [HttpPost, Route("api/Ciudad")]
         public IHttpActionResult Post(Ciudad nuevaCiudad)
-        {
+        {            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             IDALAsignacionDeRecursos nuevaCredencialCiudad = new DALAsignacionDeRecursos();
             CredentialsDB ciuCred = nuevaCredencialCiudad.GetCredencialesCiudad(nuevaCiudad.Longitud, nuevaCiudad.Longitud, nuevaCiudad.Nombre);
 
-            if (!ModelState.IsValid)
+            if(ciuCred == null)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
 
-            //Thread t = new Thread();
-
-            //t.Start();
-            //t.Name = nuevaCiudad.Nombre;
-
-            //return CreatedAtRoute("DefaultApi", new { controller = "CambioAlcance", id = cambioAlcacne.ID }, cambioAlcacne);
-            return Ok();
+            return Json("Message: Se creo la ciudad");
         }
 
-        // PUT: api/Ciudad/5
-        public IHttpActionResult Put(string nombre, Ciudad ciudad)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPut, Route("api/Ciudad")]
+        //public IHttpActionResult Put(string nombre, Ciudad ciudad)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (nombre != ciudad.Nombre)
-            {
-                return BadRequest();
-            }
+        //    if (nombre != ciudad.Nombre)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
 
-        // DELETE: api/Ciudad/5
-        [Route("api/CambioAlcance/{id}")]
-        [HttpDelete]
-        public IHttpActionResult Delete(string nombre)
-        {
-            //GetById, si no lo encuentro:
-            //if (cambioAlcance == null)
-            //{
-            //    return NotFound();
-            //}
+        //[HttpDelete, Route("api/Ciudad/latitud/{latitud}/longitud/{longitud}")]
+        //public IHttpActionResult Delete(double latitud, double longitud)
+        //{
+        //    GetById, si no lo encuentro:
+        //    if (cambioAlcance == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            //Sistema de control de borrado
-            //if (CambioAlcanceApi.CanDelete(DC, id))
-            //{
-            //    cambioAlcance.Deleted = true;
-            //    CambioAlcanceApi.Update(DC, cambioAlcance);
-            //    DeleteTareas(cambioAlcance.ID);
+        //    Sistema de control de borrado
+        //    if (CambioAlcanceApi.CanDelete(DC, id))
+        //    {
+        //        cambioAlcance.Deleted = true;
+        //        CambioAlcanceApi.Update(DC, cambioAlcance);
+        //        DeleteTareas(cambioAlcance.ID);
 
-            //    return Ok(new DeleteResult
-            //    {
-            //        Success = true,
-            //        Message = "Se ha eliminado con éxito el Cambio de Alcance."
-            //    });
-            //}
-            //else
-            //{
-            //    return Ok(new DeleteResult
-            //    {
-            //        Success = false,
-            //        Message = "No se puede eliminar el Cambio de Alcance por que existen horas cargadas a alguna de sus tareas."
-            //    });
-            //}
-            return Ok();
-        }
+        //        return Ok(new DeleteResult
+        //        {
+        //            Success = true,
+        //            Message = "Se ha eliminado con éxito el Cambio de Alcance."
+        //        });
+        //    }
+        //    else
+        //    {
+        //        return Ok(new DeleteResult
+        //        {
+        //            Success = false,
+        //            Message = "No se puede eliminar el Cambio de Alcance por que existen horas cargadas a alguna de sus tareas."
+        //        });
+        //    }
+        //    return Ok();
+        //}
     }
 }
