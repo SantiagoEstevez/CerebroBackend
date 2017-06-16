@@ -20,11 +20,32 @@ namespace Cerebro14.DAL
             _dbeve.nombre = e.Name;
             _dbeve.ID_Lat = e.Latitude;
             _dbeve.ID_Lon = e.Longitude;
-
-            db.TABeventos.Add(_dbeve);
-            db.SaveChanges();
+            try
+            {
+                db.TABeventos.Add(_dbeve);
+                db.SaveChanges();
+            }
+            catch (Exception ek)
+            {
+                Console.WriteLine("{0} ERROR: ya existe o se perdio la conexion :( ", ek);
+            }
         }
-            
+
+        public List<Event> GetAllEvent(CredentialsDB creden) {
+
+            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+
+            List<Event> lista = new List<Event>();
+            foreach (var item in db.TABeventos.ToList())
+            {
+                Event acc = new Event();
+                acc.Name = item.nombre;
+                acc.Latitude = item.ID_Lat;
+                acc.Longitude = item.ID_Lon;
+                lista.Add(acc);
+            }
+            return lista;
+        }
 
         public bool ExistEventByID(double Lat, double Lon, CredentialsDB creden)
         {

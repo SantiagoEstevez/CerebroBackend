@@ -152,7 +152,20 @@ namespace Cerebro14.DAL
 
         public List<Accion> GetAllAcctions(CredentialsDB creden) {
 
-            return null;
+            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+            
+            List<Accion> lista = new List<Accion>();
+            foreach (var item in db.TABacciones.ToList())
+            {
+                Accion acc = new Accion();
+                acc.EmailUsu = item.FK_email_usu;
+                acc.Latitud = item.FK_Eve_Lat;
+                acc.Longitud = item.FK_Eve_Lon;
+                acc.Parametro = item.parametros;
+                acc.Tipo = item.tipo;
+                lista.Add(acc);
+            }
+            return lista;
         }
 
         public void DeleteActionFromEvent(double Lat, double Lon, CredentialsDB creden) {

@@ -20,7 +20,7 @@ namespace Cerebro14.DAL.Model
         {
         }
         public CiudadEntities(string connStringName)
-           : base("name=" + connStringName)
+       : base("name=" + connStringName)
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -35,5 +35,6 @@ namespace Cerebro14.DAL.Model
         public virtual DbSet<TABsensor> TABsensor { get; set; }
         public virtual DbSet<TABsensorEvento> TABsensorEvento { get; set; }
         public virtual DbSet<TABusuarios> TABusuarios { get; set; }
+        public virtual DbSet<TABZona> TABZona { get; set; }
     }
 }

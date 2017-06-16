@@ -11,50 +11,312 @@ using System.Threading;
 
 namespace Cerebro14.DAL
 {
-    class Program
+    public class Sensores
     {
-        static void Main(string[] args)
+        private CredentialsDB creden = new CredentialsDB{
+
+            AddressServerDb = "ds028540.mlab.com",
+            NameDbM = "cerebro201701",
+            NameDbSQL = "Ciudad01",
+            PassDb = "5h5thg5@tgdhfGhuiOu",
+            PortServerDb = 28540,
+            UserDb = "AdminDB",
+            NameCiudad = "mongolin",
+            Ciudad_Lat = 100,
+            Ciudad_Lon = 101
+        };
+
+        private CredentialsDB creden2 = new CredentialsDB {
+
+            AddressServerDb = "ds163301.mlab.com",
+            NameDbM = "cerebro201702",
+            NameDbSQL = "Ciudad02",
+            PassDb = "5h5thg5@tgdhfGhuiOu",
+            PortServerDb = 63301,
+            UserDb = "AdminDB",
+            NameCiudad = "mongolin2",
+            Ciudad_Lat = 100,
+            Ciudad_Lon = 101
+        };
+
+        public void Ciudad_1_sensor_tipo_1()
         {
-          
 
-            
+            while (Stop_C1_S1)
+            {
+                DataSensor d1 = new DataSensor();
+                Random rnd = new Random();
+                d1.dato = rnd.Next(10, 30);
+                d1.diayHora = DateTime.Now;
+                d1.Latitude = 1500;
+                d1.Longitude = 1000;
+                IDALdatosSensores mondb = new DALdatosSensores();
+                mondb.AddDataSensor(d1, creden);
+                Thread.Sleep(5000);
+            };
+        }
+        public void Ciudad_1_sensor_tipo_2()
+        {
 
+            while (Stop_C1_S2)
+            {
+                DataSensor d1 = new DataSensor();
+                Random rnd = new Random();
+                d1.dato = rnd.Next(10, 30);
+                d1.diayHora = DateTime.Now;
+                d1.Latitude = 2500;
+                d1.Longitude = 2000;
+                IDALdatosSensores mondb = new DALdatosSensores();
+                mondb.AddDataSensor(d1, creden);
+                Thread.Sleep(5000);
+            };
+        }
+        public void Ciudad_1_sensor_tipo_3()
+        {
 
+            while (Stop_C1_S3)
+            {
+                DataSensor d1 = new DataSensor();
+                Random rnd = new Random();
+                d1.dato = rnd.Next(10, 30);
+                d1.diayHora = DateTime.Now;
+                d1.Latitude = 3500;
+                d1.Longitude = 3000;
+                IDALdatosSensores mondb = new DALdatosSensores();
+                mondb.AddDataSensor(d1, creden);
+                Thread.Sleep(5000);
+            };
+        }
+        public void Ciudad_2_sensor_tipo_1()
+        {
 
+            while (Stop_C2_S1)
+            {
+                DataSensor d1 = new DataSensor();
+                Random rnd = new Random();
+                d1.dato = rnd.Next(30, 100);
+                d1.diayHora = DateTime.Now;
+                d1.Latitude = 1500;
+                d1.Longitude = 1000;
+                IDALdatosSensores mondb = new DALdatosSensores();
+                mondb.AddDataSensor(d1, creden);
+                Thread.Sleep(5000);
+            };
+        }
+        public void Ciudad_2_sensor_tipo_2()
+        {
 
-            MagiaMagia magia1 = new MagiaMagia(20, 200, "Mongolin_1");
-            Thread magia1Thread = new Thread(magia1.magiausuarios);
+            while (Stop_C2_S2)
+            {
+                DataSensor d1 = new DataSensor();
+                Random rnd = new Random();
+                d1.dato = rnd.Next(30, 100);
+                d1.diayHora = DateTime.Now;
+                d1.Latitude = 2500;
+                d1.Longitude = 2000;
+                IDALdatosSensores mondb = new DALdatosSensores();
+                mondb.AddDataSensor(d1, creden);
+                Thread.Sleep(5000);
+            };
+        }
+        public void Ciudad_2_sensor_tipo_3()
+        {
 
-            // Start the worker thread.
-            magia1Thread.Start();
-
-            MagiaMagia magia2 = new MagiaMagia(1000, 1414, "Mongolin_2");
-            Thread magia2Thread = new Thread(magia2.magiausuarios);
-
-            // Start the worker thread.
-            magia2Thread.Start();
-
-            Console.Read();
-            Console.Read();
-
+            while (Stop_C2_S3)
+            {
+                DataSensor d1 = new DataSensor();
+                Random rnd = new Random();
+                d1.dato = rnd.Next(30, 100);
+                d1.diayHora = DateTime.Now;
+                d1.Latitude = 3500;
+                d1.Longitude = 3000;
+                IDALdatosSensores mondb = new DALdatosSensores();
+                mondb.AddDataSensor(d1, creden);
+                Thread.Sleep(5000);
+            };
         }
 
+        public void S_C1_S1()
+        {
+            Stop_C1_S1 = false;
+        }
+        public void C_C1_S1()
+        {
+            Stop_C1_S1 = true;
+        }
 
+        public void S_C1_S2()
+        {
+            Stop_C1_S2 = false;
+        }
+        public void C_C1_S2()
+        {
+            Stop_C1_S2 = true;
+        }
 
+        public void S_C1_S3()
+        {
+            Stop_C1_S3 = false;
+        }
+        public void C_C1_S3()
+        {
+            Stop_C1_S3 = true;
+        }
 
+        public void S_C2_S1()
+        {
+            Stop_C2_S1 = false;
+        }
+        public void C_C2_S1()
+        {
+            Stop_C2_S1 = true;
+        }
 
-        
+        public void S_C2_S2()
+        {
+            Stop_C2_S2 = false;
+        }
+        public void C_C2_S2()
+        {
+            Stop_C2_S2 = true;
+        }
+        public void S_C2_S3()
+        {
+            Stop_C2_S3 = false;
+        }
+        public void C_C2_S3()
+        {
+            Stop_C2_S3 = true;
+        }
+        private volatile bool Stop_C1_S1 = true;
+        private volatile bool Stop_C1_S2 = true;
+        private volatile bool Stop_C1_S3 = true;
 
+        private volatile bool Stop_C2_S1 = true;
+        private volatile bool Stop_C2_S2 = true;
+        private volatile bool Stop_C2_S3 = true;
 
+    }
+    class Program
+    {
 
-
-
-
-        /*
         static void Main(string[] args)
         {
+            Sensores msg = new Sensores();
+            Thread th1 = new Thread(new ThreadStart(msg.Ciudad_1_sensor_tipo_1));
+            Thread th2 = new Thread(new ThreadStart(msg.Ciudad_1_sensor_tipo_2));
+            Thread th3 = new Thread(new ThreadStart(msg.Ciudad_1_sensor_tipo_3));
 
-            
+            Thread th1C = new Thread(new ThreadStart(msg.Ciudad_2_sensor_tipo_1));
+            Thread th2C = new Thread(new ThreadStart(msg.Ciudad_2_sensor_tipo_2));
+            Thread th3C = new Thread(new ThreadStart(msg.Ciudad_2_sensor_tipo_3));
+            bool seguir = true;
+            string s;
+            Console.WriteLine("Bienvenid@ precione S/s para salir");
+            Console.WriteLine("Precione del 1 al 3 para activar el envio de datos en modo normal");
+            Console.WriteLine("Precione del c1 al c3 para activar el envio de datos en modo caos");
+            while (seguir)
+            {
+
+
+             s = Console.ReadLine();
+
+
+                if ( s == "S" || s == "s"){
+
+                    msg.S_C1_S1();
+                    msg.S_C1_S2();
+                    msg.S_C1_S3();
+                    msg.S_C2_S1();
+                    msg.S_C2_S2();
+                    msg.S_C2_S3();
+                    seguir = false;
+                }
+
+
+                if (s == "1"){
+
+                    msg.S_C2_S1();
+                    msg.C_C1_S1();
+                    if (!th1.IsAlive)
+                    {
+                        th1 = new Thread(new ThreadStart(msg.Ciudad_1_sensor_tipo_1));
+                        th1.Start();
+                        Console.Write("Iniciando sensor 1 en ciudad 1 modo normal");
+                    }
+                }
+
+                if (s == "2")
+                {
+                    msg.S_C2_S2();
+                    msg.C_C1_S2();
+                    if (!th2.IsAlive)
+                    {
+                        th2 = new Thread(new ThreadStart(msg.Ciudad_1_sensor_tipo_2));
+                        th2.Start();
+                        Console.Write("Iniciando sensor 2 en ciudad 1 modo normal");
+                    }
+
+                }
+
+                if (s == "3")
+                {
+                    msg.S_C2_S3();
+                    msg.C_C1_S3();
+                    if (!th3.IsAlive)
+                    {
+                        th3 = new Thread(new ThreadStart(msg.Ciudad_1_sensor_tipo_3));
+                        th3.Start();
+                        Console.Write("Iniciando sensor 3 en ciudad 1 modo normal");
+                    }
+
+                }
+
+
+                if (s == "c1")
+                {
+                    msg.S_C1_S1();
+                    msg.C_C2_S1();
+                    if (!th1C.IsAlive)
+                    {
+                        th1C = new Thread(new ThreadStart(msg.Ciudad_2_sensor_tipo_1));
+                        th1C.Start();
+                        Console.Write("Iniciando sensor 1 en ciudad 1 modo caos");
+                    }
+
+                }
+
+                if (s == "c2")
+                {
+                    msg.S_C1_S2();
+                    msg.C_C2_S2();
+                    if (!th2C.IsAlive)
+                    {
+                        th2C = new Thread(new ThreadStart(msg.Ciudad_2_sensor_tipo_2));
+                        th2C.Start();
+                        Console.Write("Iniciando sensor 2 en ciudad 1 modo caos");
+                    }
+
+                }
+
+                if (s == "c3")
+                {
+                    msg.S_C1_S3();
+                    msg.C_C2_S3();
+                    if (!th3C.IsAlive)
+                    {
+                        th3C = new Thread(new ThreadStart(msg.Ciudad_2_sensor_tipo_3));
+                        th3C.Start();
+                        Console.Write("Iniciando sensor 3 en ciudad 1 modo caos");
+                    }
+
+                }
+            }
+
+        }
+    }
+}
+            /*
             //string C2 = "Ciudad02", C3 = "Ciudad03" ,C1 = "Ciudad01";
 
             CredentialsDB C1 = new CredentialsDB();
@@ -286,9 +548,10 @@ namespace Cerebro14.DAL
 
 
             Console.Read();
-        } */
+        } 
 
 
 
     }
 }
+*/

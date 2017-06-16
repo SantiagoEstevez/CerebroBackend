@@ -86,6 +86,18 @@
           <Property Name="FK_Edi_Lon" Type="float" Nullable="false" />
           <Property Name="telefono" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="TABZona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lat_Zona" Type="float" Nullable="false" />
+          <Property Name="Lon_Zona" Type="float" Nullable="false" />
+          <Property Name="Radio_Zona" Type="float" Nullable="false" />
+          <Property Name="Name_Zona" Type="varchar" MaxLength="40" />
+          <Property Name="Zona_string_extra" Type="varchar" MaxLength="40" />
+          <Property Name="Zona_num_extra" Type="float" />
+        </EntityType>
         <Association Name="fk_edificio">
           <End Role="TABedificios" Type="Self.TABedificios" Multiplicity="1" />
           <End Role="TABusuarios" Type="Self.TABusuarios" Multiplicity="*" />
@@ -162,6 +174,7 @@
           <EntitySet Name="TABsensor" EntityType="Self.TABsensor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TABsensorEvento" EntityType="Self.TABsensorEvento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TABusuarios" EntityType="Self.TABusuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TABZona" EntityType="Self.TABZona" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_edificio" Association="Self.fk_edificio">
             <End Role="TABedificios" EntitySet="TABedificios" />
             <End Role="TABusuarios" EntitySet="TABusuarios" />
@@ -279,6 +292,18 @@
           <NavigationProperty Name="TABacciones" Relationship="Self.fk_TABusuarios" FromRole="TABusuarios" ToRole="TABacciones" />
           <NavigationProperty Name="TABedificios" Relationship="Self.fk_edificio" FromRole="TABusuarios" ToRole="TABedificios" />
         </EntityType>
+        <EntityType Name="TABZona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lat_Zona" Type="Double" Nullable="false" />
+          <Property Name="Lon_Zona" Type="Double" Nullable="false" />
+          <Property Name="Radio_Zona" Type="Double" Nullable="false" />
+          <Property Name="Name_Zona" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Zona_string_extra" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Zona_num_extra" Type="Double" />
+        </EntityType>
         <Association Name="fk_TABeventos">
           <End Role="TABeventos" Type="Self.TABeventos" Multiplicity="1" />
           <End Role="TABacciones" Type="Self.TABacciones" Multiplicity="*" />
@@ -355,6 +380,7 @@
           <EntitySet Name="TABsensor" EntityType="Self.TABsensor" />
           <EntitySet Name="TABsensorEvento" EntityType="Self.TABsensorEvento" />
           <EntitySet Name="TABusuarios" EntityType="Self.TABusuarios" />
+          <EntitySet Name="TABZona" EntityType="Self.TABZona" />
           <AssociationSet Name="fk_TABeventos" Association="Self.fk_TABeventos">
             <End Role="TABeventos" EntitySet="TABeventos" />
             <End Role="TABacciones" EntitySet="TABacciones" />
@@ -464,6 +490,19 @@
                 <ScalarProperty Name="FK_Edi_Lat" ColumnName="FK_Edi_Lat" />
                 <ScalarProperty Name="FK_Edi_Lon" ColumnName="FK_Edi_Lon" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TABZona">
+            <EntityTypeMapping TypeName="CiudadModel.TABZona">
+              <MappingFragment StoreEntitySet="TABZona">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Lat_Zona" ColumnName="Lat_Zona" />
+                <ScalarProperty Name="Lon_Zona" ColumnName="Lon_Zona" />
+                <ScalarProperty Name="Radio_Zona" ColumnName="Radio_Zona" />
+                <ScalarProperty Name="Name_Zona" ColumnName="Name_Zona" />
+                <ScalarProperty Name="Zona_string_extra" ColumnName="Zona_string_extra" />
+                <ScalarProperty Name="Zona_num_extra" ColumnName="Zona_num_extra" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
