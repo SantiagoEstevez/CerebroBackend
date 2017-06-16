@@ -8,6 +8,7 @@ using Cerebro14.DAL.Model;
 using Cerebro14.DAL.Mongodb;
 using Cerebro14.Model.SensorTypes;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Cerebro14.DAL
 {
@@ -215,6 +216,39 @@ namespace Cerebro14.DAL
             Console.WriteLine("Bienvenid@ precione S/s para salir");
             Console.WriteLine("Precione del 1 al 3 para activar el envio de datos en modo normal");
             Console.WriteLine("Precione del c1 al c3 para activar el envio de datos en modo caos");
+            /*
+                     CredentialsDB creden = new CredentialsDB
+                    {
+
+                        AddressServerDb = "ds028540.mlab.com",
+                        NameDbM = "cerebro201701",
+                        NameDbSQL = "Ciudad01",
+                        PassDb = "5h5thg5@tgdhfGhuiOu",
+                        PortServerDb = 28540,
+                        UserDb = "AdminDB",
+                        NameCiudad = "mongolin",
+                        Ciudad_Lat = 100,
+                        Ciudad_Lon = 101
+                    };
+
+         CredentialsDB creden2 = new CredentialsDB
+        {
+
+            AddressServerDb = "ds163301.mlab.com",
+            NameDbM = "cerebro201702",
+            NameDbSQL = "Ciudad02",
+            PassDb = "5h5thg5@tgdhfGhuiOu",
+            PortServerDb = 63301,
+            UserDb = "AdminDB",
+            NameCiudad = "mongolin2",
+            Ciudad_Lat = 100,
+            Ciudad_Lon = 101
+        };
+
+        IDALAsignacionDeRecursos coso = new DALAsignacionDeRecursos();
+            coso.SetCredencialesCiudad(creden2, "");
+            coso.SetCredencialesCiudad(creden, "");
+            */
             while (seguir)
             {
 
@@ -310,6 +344,13 @@ namespace Cerebro14.DAL
                         Console.Write("Iniciando sensor 3 en ciudad 1 modo caos");
                     }
 
+                }
+
+                if (s == "patapalo") {
+
+                    var prs = new ProcessStartInfo("iexplore.exe");
+                    prs.Arguments = "https://www.youtube.com/watch?v=1-aDtpk5860";
+                    Process.Start(prs);
                 }
             }
 
