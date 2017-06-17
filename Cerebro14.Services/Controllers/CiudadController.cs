@@ -21,13 +21,31 @@ namespace Cerebro14.Services.Controllers
         {
             try
             {
-                //Pedir todas las ciudades a la DAL
-                List<Ciudad> allCiudades = new List<Ciudad>();
+                IDALAsignacionDeRecursos ade = new DALAsignacionDeRecursos();
+                List<CredentialsDB> lCred = ade.GetAllCredencialesCiudad();
 
-                //if (!allCiudades.Any())
-                //{
-                //    return NotFound();
-                //}
+                if (!lCred.Any())
+                {
+                    return BadRequest();
+                }
+
+                List<Ciudad> allCiudades = new List<Ciudad>();
+                foreach(CredentialsDB cred in lCred)
+                {
+                    Ciudad newCiu = new Ciudad()
+                    {
+                        Latitud = cred.Ciudad_Lat,
+                        Longitud = cred.Ciudad_Lon,
+                        Nombre = cred.NameCiudad
+                    };
+
+                    allCiudades.Add(newCiu);
+                }
+
+                if (!allCiudades.Any())
+                {
+                    return NotFound();
+                }
 
                 return Json(allCiudades);
             }

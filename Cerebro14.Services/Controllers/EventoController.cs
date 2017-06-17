@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cerebro14.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,19 +10,26 @@ namespace Cerebro14.Services.Controllers
 {
     public class EventoController : ApiController
     {
-        // GET: api/Event
-        public IEnumerable<string> Get()
+        [HttpGet, Route("api/Evento")]
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            List<Event> allEvento = new List<Event>();
+
+            if (!allEvento.Any())
+            {
+                return NotFound();
+            }
+
+            return Json(allEvento);
         }
 
-        // GET: api/Event/5
-        public string Get(int id)
+        [HttpGet, Route("api/Evento/latitud/{longitud}/latitud/{latitud}")]
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            ;
         }
 
-        // POST: api/Event
+        [HttpPost, Route("api/Evento/latitud/{longitud}/latitud/{latitud}/radio/{radio}")]
         public void Post([FromBody]string value)
         {
         }
