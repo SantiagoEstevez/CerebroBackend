@@ -12,5 +12,6 @@ namespace Cerebro14.DAL
     {
         CredentialsDB GetCredencialesCiudad(double Lat, double Lon,string nom);
         void SetCredencialesCiudad(CredentialsDB cre, string nam);
+        List<CredentialsDB> GetAllCredencialesCiudad();
     }
 }
