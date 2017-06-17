@@ -23,10 +23,10 @@ namespace Cerebro14.Services.Controllers
             return Json(allEvento);
         }
 
-        [HttpGet, Route("api/Evento/latitud/{longitud}/latitud/{latitud}")]
-        public IHttpActionResult Get(int id)
+        [HttpGet, Route("api/Evento/{latitud}/{longitud}")]
+        public IHttpActionResult Get(double latitud, double longitud)
         {
-            ;
+            return Json("Funciono");
         }
 
         [HttpPost, Route("api/Evento/latitud/{longitud}/latitud/{latitud}/radio/{radio}")]

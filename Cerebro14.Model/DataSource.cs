@@ -13,5 +13,6 @@ namespace Cerebro14.Model
         public string Tipo { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public string Umbral { get; set; }
     }
 }
