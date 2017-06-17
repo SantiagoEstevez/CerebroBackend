@@ -24,9 +24,15 @@ namespace Cerebro14.DAL
             _dbSen.nombre = d.name;
             _dbSen.tipo = d.Tipo;
 
-
-            db.TABsensor.Add(_dbSen);
-            db.SaveChanges();
+            try
+            {
+                db.TABsensor.Add(_dbSen);
+                db.SaveChanges();
+            }
+            catch (Exception ek)
+            {
+                Console.WriteLine("{0} ERROR: ya existe o se perdio la conexion :( ", ek);
+            }
 
         }
 

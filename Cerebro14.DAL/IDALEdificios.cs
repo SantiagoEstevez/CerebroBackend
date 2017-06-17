@@ -13,6 +13,8 @@ namespace Cerebro14.DAL
 
         bool ExistEdificioByID(double Lat, double Lon, CredentialsDB creden);
 
+        List<Edificio> GetAllEdificios(CredentialsDB creden);
+
         void DeleteEdificio(double Lat, double Lon, CredentialsDB creden);
 
     }

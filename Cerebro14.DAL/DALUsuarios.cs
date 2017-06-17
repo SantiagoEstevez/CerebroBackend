@@ -29,9 +29,15 @@ namespace Cerebro14.DAL
             _dbUsu.fechaN = usu.Birthdate;
             _dbUsu.FK_Edi_Lat = usu.Lat_edicicio;
             _dbUsu.FK_Edi_Lon = usu.Lon_edicicio;
-
-            db.TABusuarios.Add(_dbUsu);
-            db.SaveChanges();
+            try
+            {
+                db.TABusuarios.Add(_dbUsu);
+                db.SaveChanges();
+            }
+            catch (Exception ek)
+            {
+                Console.WriteLine("{0} ERROR: ya existe o se perdio la conexion :( ", ek);
+            }
 
         }
         public bool ExistUserByID(string userID, CredentialsDB creden)

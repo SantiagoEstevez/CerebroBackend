@@ -131,13 +131,41 @@ namespace Cerebro14.DAL
             var _acction = from a in db.TABacciones
                            where (a.FK_Eve_Lat == Lat && a.FK_Eve_Lon == Lon && a.FK_email_usu == IDUser)
                            select a;
-            return null;
+
+            TABacciones _ac;
+            _ac = _acction.First();
+            Accion ac = null;
+
+            if (_ac != null) {
+
+                ac = new Accion();
+                ac.EmailUsu = _ac.FK_email_usu;
+                ac.Latitud = _ac.FK_Eve_Lat;
+                ac.Longitud = _ac.FK_Eve_Lon;
+                ac.Parametro = _ac.parametros;
+                ac.Tipo = _ac.tipo;
+            }
+
+            return ac;
             
         }
 
         public List<Accion> GetAllAcctions(CredentialsDB creden) {
 
-            return null;
+            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+            
+            List<Accion> lista = new List<Accion>();
+            foreach (var item in db.TABacciones.ToList())
+            {
+                Accion acc = new Accion();
+                acc.EmailUsu = item.FK_email_usu;
+                acc.Latitud = item.FK_Eve_Lat;
+                acc.Longitud = item.FK_Eve_Lon;
+                acc.Parametro = item.parametros;
+                acc.Tipo = item.tipo;
+                lista.Add(acc);
+            }
+            return lista;
         }
 
         public void DeleteActionFromEvent(double Lat, double Lon, CredentialsDB creden) {
