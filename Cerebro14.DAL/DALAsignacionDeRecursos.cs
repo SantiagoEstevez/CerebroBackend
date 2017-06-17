@@ -12,6 +12,38 @@ namespace Cerebro14.DAL
 {
     public class DALAsignacionDeRecursos : IDALAsignacionDeRecursos
     {
+        public List<CredentialsDB> GetAllCredencialesCiudad()
+        {
+            using (CiudadEntities dbr = new CiudadEntities("Ciudad01"))
+            {
+                var Ciudad = from c in dbr.TABCiudades
+                             where (c.RecursoLibre == 1.0)
+                             select c;
+
+                List<CredentialsDB> lista = new List<CredentialsDB>();
+
+                foreach (var _ciud in Ciudad)
+                {
+                    CredentialsDB cred = new CredentialsDB();
+                    cred.AddressServerDb = _ciud.AddressServerDb;
+                    cred.Ciudad_Lat = _ciud.ID_Ciu_Lat;
+                    cred.Ciudad_Lon = _ciud.ID_Ciu_Lon;
+                    cred.NameCiudad = _ciud.NameCiudade;
+                    cred.NameDbM = _ciud.NameDbM;
+                    cred.NameDbSQL = _ciud.NameDbSQL;
+                    cred.PassDb = _ciud.PassDb;
+                    cred.PortServerDb = _ciud.PortServerDb;
+                    cred.UserDb = _ciud.UserDb;
+
+                    lista.Add(cred);
+
+                }
+                return lista;
+
+            }
+
+
+        }
         public CredentialsDB GetCredencialesCiudad(double Lat, double Lon, string nom) {
             using (CiudadEntities dbr = new CiudadEntities("Ciudad01"))
             {
@@ -38,8 +70,7 @@ namespace Cerebro14.DAL
                         cred.PortServerDb = _ciud.PortServerDb;
                         cred.UserDb = _ciud.UserDb;
 
-
-                    }
+                        }
 
                 }
                 else
