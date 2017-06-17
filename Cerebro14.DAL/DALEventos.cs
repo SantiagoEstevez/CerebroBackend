@@ -12,45 +12,52 @@ namespace Cerebro14.DAL
     {
         public void AddEvent(Event e, CredentialsDB creden)
         {
-            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
-
-            TABeventos _dbeve;
-            _dbeve = new TABeventos();
-
-            _dbeve.nombre = e.Name;
-            _dbeve.ID_Lat = e.Latitude;
-            _dbeve.ID_Lon = e.Longitude;
-            try
+            //CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+            using (CiudadEntities db = new CiudadEntities(creden.NameDbSQL))
             {
-                db.TABeventos.Add(_dbeve);
-                db.SaveChanges();
-            }
-            catch (Exception ek)
-            {
-                Console.WriteLine("{0} ERROR: ya existe o se perdio la conexion :( ", ek);
+                TABeventos _dbeve;
+                _dbeve = new TABeventos();
+
+                _dbeve.nombre = e.Name;
+                _dbeve.ID_Lat = e.Latitude;
+                _dbeve.ID_Lon = e.Longitude;
+                try
+                {
+                    db.TABeventos.Add(_dbeve);
+                    db.SaveChanges();
+                }
+                catch (Exception ek)
+                {
+                    Console.WriteLine("{0} ERROR: ya existe o se perdio la conexion :( ", ek);
+                }
             }
         }
 
         public List<Event> GetAllEvent(CredentialsDB creden) {
 
-            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
-
-            List<Event> lista = new List<Event>();
-            foreach (var item in db.TABeventos.ToList())
+            //CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+            using (CiudadEntities db = new CiudadEntities(creden.NameDbSQL))
             {
-                Event acc = new Event();
-                acc.Name = item.nombre;
-                acc.Latitude = item.ID_Lat;
-                acc.Longitude = item.ID_Lon;
-                lista.Add(acc);
+                List<Event> lista = new List<Event>();
+                foreach (var item in db.TABeventos.ToList())
+                {
+                    Event acc = new Event();
+                    acc.Name = item.nombre;
+                    acc.Latitude = item.ID_Lat;
+                    acc.Longitude = item.ID_Lon;
+                    lista.Add(acc);
+                }
+                return lista;
             }
-            return lista;
         }
 
         public bool ExistEventByID(double Lat, double Lon, CredentialsDB creden)
         {
-            CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
-            return db.TABeventos.Any(e => (e.ID_Lat == Lat) && (e.ID_Lon == Lon));
+            //CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
+            using (CiudadEntities db = new CiudadEntities(creden.NameDbSQL))
+            {
+                return db.TABeventos.Any(e => (e.ID_Lat == Lat) && (e.ID_Lon == Lon));
+            }
         }
 
         public void DeleteUser(double Lat, double Lon, CredentialsDB creden)
