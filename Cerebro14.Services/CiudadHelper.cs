@@ -28,5 +28,19 @@ namespace Cerebro14.Services
             string token = Convert.ToBase64String(time.Concat(key).ToArray());
             return token;
         }
+
+        public static List<string> TipoSensoresCiudad(double latitud = 0, double longitud = 0)
+        {
+            return new List<string>()
+            {
+                "Agua",
+                "Fuego",
+                "Tierra",
+                "Aire",
+                "Avatar",
+                "Nacion del fuego",
+                "Death star"
+            };
+        }
     }
 }

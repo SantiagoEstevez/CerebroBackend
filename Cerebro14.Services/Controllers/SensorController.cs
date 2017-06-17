@@ -66,36 +66,10 @@ namespace Cerebro14.Services.Controllers
             } 
         }
 
-        //// PUT: api/Sensor/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //[HttpDelete, Route("api/Sensor")]
-        //public IHttpActionResult Delete(DataSource sensor, Ciudad inCity)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
-        //    CredentialsDB city = cityContext.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, inCity.Nombre);
-
-        //    if(city == null)
-        //    {
-        //        return BadRequest("No existe ciudad");
-        //    }
-
-        //    IDALsensor sensorContext = new DALsensor();
-        //    DataSource sensorToCheck = sensorContext.GetSensorByID(sensor.Latitude, sensor.Longitude, city);
-
-        //    if(sensorToCheck == null)
-        //    {
-        //        return BadRequest("No existe sensor");
-        //    }
-
-        //    sensorContext.
-        //}
+        [HttpGet, Route("api/Sensor/Tipos")]
+        public IHttpActionResult Get()
+        {
+            return Json(CiudadHelper.TipoSensoresCiudad());
+        }
     }
 }
