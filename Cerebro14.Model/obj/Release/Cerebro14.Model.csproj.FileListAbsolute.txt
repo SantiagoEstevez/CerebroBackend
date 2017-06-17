@@ -10,3 +10,15 @@ C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\bin\
 C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\obj\Release\Cerebro14.Model.csprojResolveAssemblyReference.cache
 C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\obj\Release\Cerebro14.Model.dll
 C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.Model\obj\Release\Cerebro14.Model.pdb
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\Cerebro14.Model.dll
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\Cerebro14.Model.pdb
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\MongoDB.Bson.dll
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\MongoDB.Driver.Core.dll
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\MongoDB.Driver.dll
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\MongoDB.Bson.xml
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\MongoDB.Driver.xml
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\bin\Release\MongoDB.Driver.Core.xml
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\obj\Release\Cerebro14.Model.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\obj\Release\Cerebro14.Model.dll
+C:\Users\Admin\Desktop\Documents\GitHub\CerebroBackend\Cerebro14.Model\obj\Release\Cerebro14.Model.pdb
