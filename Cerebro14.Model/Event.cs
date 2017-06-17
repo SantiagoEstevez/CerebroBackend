@@ -11,8 +11,10 @@ namespace Cerebro14.Model
         public string Name { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public double Radio { get; set; }
+        public string[] Umbral { get; set; } //Un umbral por tipo sensor
 
         public IEnumerable<Action> Actions { get; set; }
-        public IEnumerable<DataSource> DataSources{get;set;}
+        public IEnumerable<DataSource> DataSources{ get; set; } //Tipos de sensores
     }
 }
