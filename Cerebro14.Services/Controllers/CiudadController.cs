@@ -44,9 +44,12 @@ namespace Cerebro14.Services.Controllers
             try
             {
                 IDALAsignacionDeRecursos ADR = new DALAsignacionDeRecursos();
-                
-                CredentialsDB cred = ADR.GetCredencialesCiudad(latitud, longitud, ""); //Al pedir la ciudad el parametro nombre no hace nada
-
+                CredentialsDB cred = new CredentialsDB();
+                cred = ADR.GetCredencialesCiudad(latitud, longitud, ""); //Al pedir la ciudad el parametro nombre no hace nada
+                string asd;
+                asd = cred.NameCiudad;
+                if (asd == "adsasd") {
+                };
                 if (cred == null)
                 {
                     return NotFound();
