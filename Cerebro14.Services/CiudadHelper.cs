@@ -29,20 +29,19 @@ namespace Cerebro14.Services
             return token;
         }
 
-        public static TipoSensores TipoSensoresCiudad(double latitud = 0, double longitud = 0)
+        public static List<TipoSensor> TipoSensoresCiudad(double latitud = 0, double longitud = 0)
         {
-            TipoSensores ret = new TipoSensores();
-            ret.Tipos = new List<TipoSensor>();
+            List<TipoSensor> lTipoSensores = new List<TipoSensor>();
             
-            ret.Tipos.Add(new TipoSensor() { nombre = "Agua" };);
-            ret.Tipos.Add(new TipoSensor() { nombre = "Fuego" });
-            ret.Tipos.Add(new TipoSensor() { nombre = "Tierra" });
-            ret.Tipos.Add(new TipoSensor() { nombre = "Aire" });
-            ret.Tipos.Add(new TipoSensor() { nombre = "Avatar" });
-            ret.Tipos.Add(new TipoSensor() { nombre = "Nacion del fuego" });
-            ret.Tipos.Add(new TipoSensor() { nombre = "Death star" });      
+            lTipoSensores.Add(new TipoSensor() { nombre = "Agua" });
+            lTipoSensores.Add(new TipoSensor() { nombre = "Fuego" });
+            lTipoSensores.Add(new TipoSensor() { nombre = "Tierra" });
+            lTipoSensores.Add(new TipoSensor() { nombre = "Aire" });
+            lTipoSensores.Add(new TipoSensor() { nombre = "Avatar" });
+            lTipoSensores.Add(new TipoSensor() { nombre = "Nacion del fuego" });
+            lTipoSensores.Add(new TipoSensor() { nombre = "Death star" });      
 
-            return ret;
+            return lTipoSensores;
         }
     }
 }

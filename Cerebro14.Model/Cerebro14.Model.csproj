@@ -63,7 +63,6 @@
     <Compile Include="SensorTypes\SensorHumidity.cs" />
     <Compile Include="SensorTypes\SensorTemperature.cs" />
     <Compile Include="TipoSensor.cs" />
-    <Compile Include="TipoSensores.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
