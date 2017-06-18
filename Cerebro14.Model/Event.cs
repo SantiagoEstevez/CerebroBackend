@@ -13,9 +13,9 @@ namespace Cerebro14.Model
         public double Longitude { get; set; }
         public double Radio { get; set; }
 
-        public IEnumerable<Action> Actions { get; set; }
-        public IEnumerable<DataSource> DataSources{ get; set; } //Tipos de sensores
-        public IEnumerable<User> Usuarios { get; set; }
+        public List<Action> Actions { get; set; }
+        public List<DataSource> DataSources{ get; set; } //Tipos de sensores
+        public List<User> Usuarios { get; set; }
 
         /*
         public Event GetAllTypeDataSourceinEvent(double latEvent, double lonEvent, string typeDataSource)
