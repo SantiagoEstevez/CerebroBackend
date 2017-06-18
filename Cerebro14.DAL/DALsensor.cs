@@ -36,6 +36,11 @@ namespace Cerebro14.DAL
             }
         }
 
+        public void DeleteSensor(int idSensor, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<DataSource> GetAllSensor(CredentialsDB creden)
         {
 
@@ -62,6 +67,11 @@ namespace Cerebro14.DAL
                 }
                 return lista;
             }
+        }
+
+        public DataSource GetSensor(int idSensor, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
         }
 
         public DataSource GetSensorByID(double Lat, double Lon, CredentialsDB creden)

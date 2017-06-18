@@ -13,7 +13,7 @@ namespace Cerebro14.DAL
 
         void AddAction(Accion a, CredentialsDB creden);
 
-        Accion GetAccion(int idAccion, CredentialsDB creden);
+        Accion GetAccion(int idEvento, int idUser, CredentialsDB creden);
 
         //List<User> GetAllUserFromEvent(int idAccion, CredentialsDB creden);
 
@@ -23,7 +23,7 @@ namespace Cerebro14.DAL
 
         List<Accion> GetAllAcctions(CredentialsDB creden);
 
-        void DeleteAction(int idAccion, CredentialsDB creden);
+        void DeleteAction(int idEvento, int idUser, CredentialsDB creden);
 
         //void DeleteActionFromUser(int , CredentialsDB creden);
 

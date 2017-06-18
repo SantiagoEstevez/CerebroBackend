@@ -181,5 +181,14 @@ namespace Cerebro14.DAL
 
         }
 
+        public Accion GetAccion(int idEvento, int idUser, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteAction(int idEvento, int idUser, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

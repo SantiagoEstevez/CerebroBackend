@@ -64,5 +64,10 @@ namespace Cerebro14.DAL
         {
 
         }
+
+        public Event GetEvent(int idEvento, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

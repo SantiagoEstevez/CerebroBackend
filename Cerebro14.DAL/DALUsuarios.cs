@@ -182,5 +182,25 @@ namespace Cerebro14.DAL
             }
 
         }
+
+        public User GetUserByID(int userID, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<User> GetAllUsers(int userID, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ExistUserByID(int userID, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteUser(int nom, CredentialsDB creden)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
