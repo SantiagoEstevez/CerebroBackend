@@ -33,7 +33,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet, Route("api/Usuario/{ci}/CiudadLat/{cityLat}/CiudadLon/{cityLon}")]
+        [HttpGet, Route("api/Usuario/{ci}/CiudadLat/{cityLat}/CiudadLon/{cityLon}/")]
         public IHttpActionResult Get(int ci, double cityLat, double cityLon)
         {
             try
