@@ -34,7 +34,7 @@ namespace Cerebro14.Services.Controllers
 
         // GET api/<controller>/5
         [HttpGet, Route("api/Usuario/{ci}/CiudadLat/{cityLat}/CiudadLon/{cityLon}")]
-        public IHttpActionResult Get(string ci, double cityLat, double cityLon)
+        public IHttpActionResult Get(int ci, double cityLat, double cityLon)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace Cerebro14.Services.Controllers
 
         // DELETE api/<controller>/5
         [HttpDelete, Route("api/Usuario/{ci}")]
-        public IHttpActionResult Delete(string ci, Ciudad inCity)
+        public IHttpActionResult Delete(int ci, Ciudad inCity)
         {
             IDALAsignacionDeRecursos cityContext = new DALAsignacionDeRecursos();
             CredentialsDB city = cityContext.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, "");

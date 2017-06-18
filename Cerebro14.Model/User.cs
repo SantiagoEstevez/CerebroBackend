@@ -8,7 +8,7 @@ namespace Cerebro14.Model
 {
     public class User
     {
-        public string CI { get; set; }
+        public int CI { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
         public DateTime Birthdate { get; set; }
