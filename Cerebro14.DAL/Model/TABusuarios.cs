@@ -20,7 +20,7 @@ namespace Cerebro14.DAL.Model
             this.TABacciones = new HashSet<TABacciones>();
         }
     
-        public string cedula { get; set; }
+        public int cedula { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public System.DateTime fechaN { get; set; }

@@ -32,17 +32,16 @@ namespace Cerebro14.Services
         public static TipoSensores TipoSensoresCiudad(double latitud = 0, double longitud = 0)
         {
             TipoSensores ret = new TipoSensores();
-            
-            ret.Tipos = new List<string>()
+            for(var i = 1; i <= 7; i++)
             {
-                "Agua",
-                "Fuego",
-                "Tierra",
-                "Aire",
-                "Avatar",
-                "Nacion del fuego",
-                "Death star"
-            };
+                ret.Tipos.Add(new TipoSensor() { nombre = "Agua" });
+                ret.Tipos.Add(new TipoSensor() { nombre = "Fuego" });
+                ret.Tipos.Add(new TipoSensor() { nombre = "Tierra" });
+                ret.Tipos.Add(new TipoSensor() { nombre = "Aire" });
+                ret.Tipos.Add(new TipoSensor() { nombre = "Avatar" });
+                ret.Tipos.Add(new TipoSensor() { nombre = "Nacion del fuego" });
+                ret.Tipos.Add(new TipoSensor() { nombre = "Death star" });
+            };              
 
             return ret;
         }
