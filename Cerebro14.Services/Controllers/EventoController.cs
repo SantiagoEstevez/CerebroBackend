@@ -26,7 +26,6 @@ namespace Cerebro14.Services.Controllers
         [HttpGet, Route("api/Evento/{latitud}/{longitud}")]
         public IHttpActionResult Get(double latitud, double longitud)
         {
-
             return Json("Funciono");
         }
 

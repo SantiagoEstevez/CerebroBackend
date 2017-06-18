@@ -53,10 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accion.cs" />
-    <Compile Include="Building.cs" />
     <Compile Include="Ciudad.cs" />
     <Compile Include="CredentialsDB.cs" />
-    <Compile Include="DataAccion.cs" />
     <Compile Include="DataSensor.cs" />
     <Compile Include="DataSource.cs" />
     <Compile Include="Edificio.cs" />
@@ -64,7 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SensorTypes\SensorHumidity.cs" />
     <Compile Include="SensorTypes\SensorTemperature.cs" />
-    <Compile Include="TipoSensor.cs" />
+    <Compile Include="TipoSensores.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

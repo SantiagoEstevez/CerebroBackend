@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cerebro14.Model
 {
-    public enum TipoSensor
+    public class TipoSensores
     {
-        Fuego,
-        Agua,
-        Aire,
-        Tierra
+        public List<string> Tipos;
     }
 }

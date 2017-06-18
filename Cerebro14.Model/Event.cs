@@ -15,6 +15,7 @@ namespace Cerebro14.Model
 
         public IEnumerable<Action> Actions { get; set; }
         public IEnumerable<DataSource> DataSources{ get; set; } //Tipos de sensores
+        public IEnumerable<User> Usuarios { get; set; }
 
         /*
         public Event GetAllTypeDataSourceinEvent(double latEvent, double lonEvent, string typeDataSource)

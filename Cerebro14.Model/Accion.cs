@@ -8,11 +8,9 @@ namespace Cerebro14.Model
 {
     public class Accion
     {
-        public string ID { get; set; }
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
-        public string Parametro { get; set; }
+        public string ID { get; set; }        
         public int Tipo { get; set; }
-        public string EmailUsu { get; set; }
+        public string Parametro { get; set; } //NroTelefono | Email | RutaServicio
+        public User usuario { get; set; }
     }
 }

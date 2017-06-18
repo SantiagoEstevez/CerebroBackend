@@ -29,9 +29,11 @@ namespace Cerebro14.Services
             return token;
         }
 
-        public static List<string> TipoSensoresCiudad(double latitud = 0, double longitud = 0)
+        public static TipoSensores TipoSensoresCiudad(double latitud = 0, double longitud = 0)
         {
-            return new List<string>()
+            TipoSensores ret = new TipoSensores();
+            
+            ret.Tipos = new List<string>()
             {
                 "Agua",
                 "Fuego",
@@ -41,6 +43,8 @@ namespace Cerebro14.Services
                 "Nacion del fuego",
                 "Death star"
             };
+
+            return ret;
         }
     }
 }
