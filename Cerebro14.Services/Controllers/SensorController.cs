@@ -13,7 +13,7 @@ namespace Cerebro14.Services.Controllers
     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class SensorController : ApiController
     {
-        [HttpGet, Route("api/Sensor/CiudadLatitud/{latCiudad}/CiudadLongitud/{lonCiudad}")]
+        [HttpGet, Route("api/Sensor/CiudadLatitud/{latCiudad}/CiudadLongitud/{lonCiudad}/")]
         public IHttpActionResult Get(double latCiudad, double lonCiudad)
         {
             try
@@ -22,8 +22,8 @@ namespace Cerebro14.Services.Controllers
 
                 IDALAsignacionDeRecursos AR = new DALAsignacionDeRecursos();
                 CredentialsDB city = AR.GetCredencialesCiudad(latCiudad, lonCiudad, "");
-                List<DataSource> lSensores = dalSensor.GetAllSensor(city);
-                
+                List<DataSource> lSensores = dalSensor.GetAllSensor(city); 
+
                 if (!lSensores.Any())
                 {
                     return NotFound();
