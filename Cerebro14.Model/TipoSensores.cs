@@ -8,6 +8,6 @@ namespace Cerebro14.Model
 {
     public class TipoSensores
     {
-        public List<TipoSensor> Tipos;
+        public List<TipoSensor> Tipos { get; set; }
     }
 }
