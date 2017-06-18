@@ -37,9 +37,6 @@ namespace Cerebro14.DAL
                 TABacciones _dbAcc;
                 _dbAcc = new TABacciones();
 
-                _dbAcc.FK_email_usu = a.EmailUsu;
-                _dbAcc.FK_Eve_Lat = a.Latitud;
-                _dbAcc.FK_Eve_Lon = a.Longitud;
                 _dbAcc.parametros = a.Parametro;
                 _dbAcc.tipo = a.Tipo;
 
@@ -147,9 +144,6 @@ namespace Cerebro14.DAL
                 {
 
                     ac = new Accion();
-                    ac.EmailUsu = _ac.FK_email_usu;
-                    ac.Latitud = _ac.FK_Eve_Lat;
-                    ac.Longitud = _ac.FK_Eve_Lon;
                     ac.Parametro = _ac.parametros;
                     ac.Tipo = _ac.tipo;
                 }
@@ -167,9 +161,6 @@ namespace Cerebro14.DAL
                 foreach (var item in db.TABacciones.ToList())
                 {
                     Accion acc = new Accion();
-                    acc.EmailUsu = item.FK_email_usu;
-                    acc.Latitud = item.FK_Eve_Lat;
-                    acc.Longitud = item.FK_Eve_Lon;
                     acc.Parametro = item.parametros;
                     acc.Tipo = item.tipo;
                     lista.Add(acc);

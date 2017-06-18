@@ -20,7 +20,7 @@ namespace Cerebro14.Services
                 UserDb = "AdminDB"
             };
         }
-
+    
         public static string CreateToken24hrs()
         {
             byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());

@@ -22,7 +22,6 @@ namespace Cerebro14.DAL
 
                 _dbSen.ID_Sen_Lat = d.Latitude;
                 _dbSen.ID_Sen_Lon = d.Longitude;
-                _dbSen.nombre = d.name;
                 _dbSen.tipo = d.Tipo;
 
                 try
@@ -55,7 +54,6 @@ namespace Cerebro14.DAL
                         DataSource usu = new SensorTemperature();
                         usu.Latitude = _usu.ID_Sen_Lat;
                         usu.Longitude = _usu.ID_Sen_Lon;
-                        usu.name = _usu.nombre;
                         usu.Tipo = _usu.tipo;
 
                         lista.Add(usu);
@@ -81,7 +79,6 @@ namespace Cerebro14.DAL
 
                     senso2.Latitude = _sen.ID_Sen_Lat;
                     senso2.Longitude = _sen.ID_Sen_Lon;
-                    senso2.name = _sen.nombre;
                     senso2.Tipo = _sen.tipo;
                 }
                 return senso2;

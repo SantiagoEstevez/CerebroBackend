@@ -1,4 +1,5 @@
-﻿using Cerebro14.Model;
+﻿using Cerebro14.DAL;
+using Cerebro14.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,17 @@ namespace Cerebro14.Services.Controllers
         [HttpGet, Route("api/Evento")]
         public IHttpActionResult Get()
         {
-            List<Event> allEvento = new List<Event>();
+            IDALEventos dbEve = new DALEventos();
+            IDALAsignacionDeRecursos dbRec = new DALAsignacionDeRecursos();
 
+            List<CredentialsDB> lCred = dbRec.GetAllCredencialesCiudad();
+            foreach (var cred in lCred)
+            {
+                
+            }
+
+            
+            List<Event> allEvento = dbEve.GetAllEvent(lCred.First());
             if (!allEvento.Any())
             {
                 return NotFound();

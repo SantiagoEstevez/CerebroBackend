@@ -91,7 +91,6 @@ namespace Cerebro14.DAL
 
                         sen.Latitude = sensorr.ID_Sen_Lat;
                         sen.Longitude = sensorr.ID_Sen_Lon;
-                        sen.name = sensorr.nombre;
                         sen.Tipo = sensorr.tipo;
 
                         lista.Add(sen);
