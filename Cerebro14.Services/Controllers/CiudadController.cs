@@ -98,7 +98,7 @@ namespace Cerebro14.Services.Controllers
             }
 
             IDALAsignacionDeRecursos nuevaCredencialCiudad = new DALAsignacionDeRecursos();
-            CredentialsDB ciuCred = nuevaCredencialCiudad.GetCredencialesCiudad(nuevaCiudad.Longitud, nuevaCiudad.Longitud, nuevaCiudad.Nombre);
+            CredentialsDB ciuCred = nuevaCredencialCiudad.GetCredencialesCiudad(nuevaCiudad.Latitud, nuevaCiudad.Longitud, nuevaCiudad.Nombre);
 
             if(ciuCred == null)
             {
