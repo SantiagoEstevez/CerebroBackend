@@ -9,7 +9,7 @@ namespace Cerebro14.DAL
 {
     public interface IDALAcciones
     {
-        void CreateAction(string IDUser, double Lat, double Lon, int tipo , string param, CredentialsDB creden);
+        //void CreateAction(string IDUser, double Lat, double Lon, int tipo , string param, CredentialsDB creden);
 
         void AddAction(Accion a, CredentialsDB creden);
 
