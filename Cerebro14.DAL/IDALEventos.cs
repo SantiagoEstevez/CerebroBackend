@@ -13,6 +13,8 @@ namespace Cerebro14.DAL
 
         List<Event> GetAllEvent(CredentialsDB creden);
 
+        Event GetEvent(int idEvento, CredentialsDB creden);
+
         bool ExistEventByID(double Lat, double Lon, CredentialsDB creden);
 
         void DeleteUser(double Lat, double Lon, CredentialsDB creden);

@@ -11,8 +11,11 @@ namespace Cerebro14.DAL
     public interface IDALsensor
     {
         void AddSensor(DataSource d, CredentialsDB creden);
-        List<DataSource> GetAllSensor(CredentialsDB creden);
-        DataSource GetSensorByID(double Lat, double Lon, CredentialsDB creden);
 
+        DataSource GetSensor(int idSensor, CredentialsDB creden);
+
+        List<DataSource> GetAllSensor(CredentialsDB creden);
+
+        void DeleteSensor(int idSensor, CredentialsDB creden);
     }
 }

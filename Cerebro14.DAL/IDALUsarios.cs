@@ -11,11 +11,13 @@ namespace Cerebro14.DAL
     {
         void AddUser(User usu, CredentialsDB creden);
 
-        User GetUserByID(string userID, CredentialsDB creden);
+        User GetUserByID(int userID, CredentialsDB creden);
 
-        bool ExistUserByID(string userID, CredentialsDB creden);
+        List<User> GetAllUsers(int userID, CredentialsDB creden);
 
-        void DeleteUser(string nom, CredentialsDB creden);
+        bool ExistUserByID(int userID, CredentialsDB creden);
+
+        void DeleteUser(int nom, CredentialsDB creden);
 
         void UpdateUser(User usu, CredentialsDB creden);
 
