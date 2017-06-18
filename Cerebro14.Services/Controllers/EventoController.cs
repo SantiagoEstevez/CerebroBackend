@@ -17,14 +17,16 @@ namespace Cerebro14.Services.Controllers
             IDALEventos dbEve = new DALEventos();
             IDALAsignacionDeRecursos dbRec = new DALAsignacionDeRecursos();
 
+            List<Event> CityEventos;
+            List<Event> allEventos;
             List<CredentialsDB> lCred = dbRec.GetAllCredencialesCiudad();
             foreach (var cred in lCred)
             {
-                
+                allEvento.Concat()
             }
 
             
-            List<Event> allEvento = dbEve.GetAllEvent(lCred.First());
+            
             if (!allEvento.Any())
             {
                 return NotFound();

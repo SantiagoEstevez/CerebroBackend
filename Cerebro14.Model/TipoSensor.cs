@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Cerebro14.Model
 {
-    public class TipoSensores
+    public class TipoSensor
     {
-        public List<TipoSensor> Tipos;
+        public string nombre { get; set; }
     }
 }
