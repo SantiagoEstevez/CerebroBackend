@@ -24,10 +24,10 @@ namespace Cerebro14.Services.Controllers
                 CredentialsDB city = AR.GetCredencialesCiudad(latCiudad, lonCiudad, "");
                 List<DataSource> lSensores = dalSensor.GetAllSensor(city); 
 
-                if (!lSensores.Any())
-                {
-                    return NotFound();
-                }                
+                //if (!lSensores.Any())
+                //{
+                //    return NotFound();
+                //}                
 
                 return Json(lSensores);
             }
