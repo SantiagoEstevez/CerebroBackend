@@ -1,5 +1,6 @@
 ﻿using Cerebro14.DAL;
 using Cerebro14.Model;
+using Cerebro14.Model.Auxiliar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,15 +40,15 @@ namespace Cerebro14.Services.Controllers
             return Json(allEventos);
         }
 
-        [HttpGet, Route("api/Evento/KBZonas/cityLat/{cityLat}/cityLon/{cityLon}/")]
+        [HttpGet, Route("api/Evento/Zonas/cityLat/{cityLat}/cityLon/{cityLon}/")]
         public IHttpActionResult Get(double cityLat, double cityLon)
         {
             IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
             IDALEventos DBEventos = new DALEventos();
 
             CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
-            List<Event> cityEvent = DBEventos.GetAllEvent(city);
-
+            List<Event> cityEvent = DBEventos.GetAllEvent(city).Where(x => x.Radio > 0).ToList();
+            
             if (!cityEvent.Any())
             {
                 return NotFound();
@@ -56,9 +57,32 @@ namespace Cerebro14.Services.Controllers
             return Json(cityEvent);
         }
 
-        [HttpPost, Route("api/Evento/latitud/{longitud}/latitud/{latitud}/radio/{radio}")]
-        public void Post([FromBody]string value)
+        [HttpPost, Route("api/Evento/Zona")]
+        public IHttpActionResult Post(AuxZonaAngular newZona)
         {
+            Event newEvent = new Event()
+            {
+                Name = newZona.Name,
+                Latitude = newZona.Latitude,
+                Longitude = newZona.Longitude,
+                Radio = newZona.Radio
+            };
+
+            Ciudad inCity = new Ciudad()
+            {
+                Nombre = newZona.ciudad,
+                Latitud = newZona.Latitude,
+                Longitud = newZona.Longitude
+            };
+            
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            CredentialsDB inCityCred = DBCiudades.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, inCity.Nombre);
+
+            DBEventos.AddEvent(newEvent, inCityCred);
+
+            return Json("Message: Exito");
         }
 
         // PUT: api/Event/5
