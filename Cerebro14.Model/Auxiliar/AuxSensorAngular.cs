@@ -8,7 +8,14 @@ namespace Cerebro14.Model.Auxiliar
 {
     public class AuxSensorAngular
     {
-        public Ciudad City { get; set; }
-        public DataSource Sensor { get; set; }
+        //Ciudad
+        public string ciudad { get; set; }//Nombre
+        public double cLatitud { get; set; }
+        public double cLongitude { get; set; }
+        
+        //Sensor
+        public string Tipo { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }

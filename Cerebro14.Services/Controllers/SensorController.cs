@@ -1,6 +1,7 @@
 ﻿using Cerebro14.DAL;
 using Cerebro14.Model;
 using Cerebro14.Model.Auxiliar;
+using Cerebro14.Model.SensorTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,8 +43,19 @@ namespace Cerebro14.Services.Controllers
         [HttpPost, Route("api/Sensor")]
         public IHttpActionResult Post(AuxSensorAngular newDataSource)
         {
-            DataSource newSensor = newDataSource.Sensor;
-            Ciudad inCity = newDataSource.City;
+            DataSource newSensor = new SensorHumidity()
+            {
+                Tipo = newDataSource.Tipo,
+                Latitude = newDataSource.Latitude,
+                Longitude = newDataSource.Longitude
+            };
+
+            Ciudad inCity = new Ciudad()
+            {
+                Nombre = newDataSource.ciudad,
+                Latitud = newDataSource.cLatitud,
+                Longitud = newDataSource.cLongitude
+            };
 
             try
             {
