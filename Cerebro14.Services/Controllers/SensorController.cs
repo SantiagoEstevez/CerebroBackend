@@ -53,7 +53,7 @@ namespace Cerebro14.Services.Controllers
             Ciudad inCity = new Ciudad()
             {
                 Nombre = newDataSource.ciudad,
-                Latitud = newDataSource.cLatitud,
+                Latitud = newDataSource.cLatitude,
                 Longitud = newDataSource.cLongitude
             };
 
@@ -75,7 +75,7 @@ namespace Cerebro14.Services.Controllers
 
                 sensorContext.AddSensor(newSensor, city);
 
-                return Ok();
+                return Json("Message: Se creo la ciudad");
             }
             catch(Exception e)
             {

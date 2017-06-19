@@ -45,6 +45,23 @@ namespace Cerebro14.Services.Controllers
             return Json("Funciono");
         }
 
+        [HttpGet, Route("api/Evento/KBZonas/cityLat/{cityLat}/cityLon/{cityLon}/")]
+        public IHttpActionResult Get(double cityLat, double cityLon)
+        {
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
+            List<Event> cityEvent = DBEventos.GetAllEvent(city);
+
+            if (!cityEvent.Any())
+            {
+                return NotFound();
+            }
+
+            return Json(cityEvent);
+        }
+
         [HttpPost, Route("api/Evento/latitud/{longitud}/latitud/{latitud}/radio/{radio}")]
         public void Post([FromBody]string value)
         {
