@@ -10,7 +10,7 @@ namespace Cerebro14.Model.Auxiliar
     {
         //Ciudad
         public string ciudad { get; set; }//Nombre
-        public double cLatitud { get; set; }
+        public double cLatitude { get; set; }
         public double cLongitude { get; set; }
         
         //Sensor
