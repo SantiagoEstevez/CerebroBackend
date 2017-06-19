@@ -32,10 +32,10 @@ namespace Cerebro14.Services.Controllers
                 }
             }
 
-            if (!allEventos.Any())
-            {
-                return NotFound();
-            }
+            //if (!allEventos.Any())
+            //{
+            //    return NotFound();
+            //}
 
             return Json(allEventos);
         }
@@ -45,7 +45,7 @@ namespace Cerebro14.Services.Controllers
         {
             Event newEvent = new Event()
             {
-                Name = newEvento.Name,
+                Name = newEvento.Nombre,
                 Latitude = newEvento.Latitude,
                 Longitude = newEvento.Longitude,
                 Radio = newEvento.Radio
@@ -78,7 +78,7 @@ namespace Cerebro14.Services.Controllers
         {
             Event newEvent = new Event()
             {
-                Name = newEvento.Name,
+                Name = newEvento.Nombre,
                 Latitude = newEvento.Latitude,
                 Longitude = newEvento.Longitude,
                 Radio = newEvento.Radio
@@ -106,7 +106,7 @@ namespace Cerebro14.Services.Controllers
             return Json("Message: Exito");
         }
 
-        [HttpGet, Route("api/Evento/Zonas/cityLat/{cityLat}/cityLon/{cityLon}/")]
+        [HttpGet, Route("api/Evento/Zona/cityLat/{cityLat}/cityLon/{cityLon}/")]
         public IHttpActionResult Get(double cityLat, double cityLon)
         {
             IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
@@ -115,10 +115,10 @@ namespace Cerebro14.Services.Controllers
             CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
             List<Event> cityEvent = DBEventos.GetAllEvent(city).Where(x => x.Radio > 0).ToList();
             
-            if (!cityEvent.Any())
-            {
-                return NotFound();
-            }
+            //if (!cityEvent.Any())
+            //{
+            //    return NotFound();
+            //}
 
             return Json(cityEvent);
         }
@@ -128,7 +128,7 @@ namespace Cerebro14.Services.Controllers
         {
             Event newEvent = new Event()
             {
-                Name = newZona.Name,
+                Name = newZona.Nombre,
                 Latitude = newZona.Latitude,
                 Longitude = newZona.Longitude,
                 Radio = newZona.Radio
@@ -154,17 +154,6 @@ namespace Cerebro14.Services.Controllers
             DBEventos.AddEvent(newEvent, inCityCred);
 
             return Json("Message: Exito");
-        }
-        
-
-        // PUT: api/Event/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Event/5
-        public void Delete(int id)
-        {
         }
     }
 }

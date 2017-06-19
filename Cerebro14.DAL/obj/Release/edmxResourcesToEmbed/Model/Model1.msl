@@ -2,7 +2,7 @@
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CiudadModelStoreContainer" CdmEntityContainer="CiudadEntities">
     <EntitySetMapping Name="TABacciones">
-      <EntityTypeMapping TypeName="CiudadModel.TABacciones">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABacciones)">
         <MappingFragment StoreEntitySet="TABacciones">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tipo" ColumnName="tipo" />
@@ -14,8 +14,9 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TABCiudades">
-      <EntityTypeMapping TypeName="CiudadModel.TABCiudades">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABCiudades)">
         <MappingFragment StoreEntitySet="TABCiudades">
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="RecursoLibre" ColumnName="RecursoLibre" />
           <ScalarProperty Name="ID_Ciu_Lat" ColumnName="ID_Ciu_Lat" />
           <ScalarProperty Name="ID_Ciu_Lon" ColumnName="ID_Ciu_Lon" />
@@ -26,12 +27,11 @@
           <ScalarProperty Name="AddressServerDb" ColumnName="AddressServerDb" />
           <ScalarProperty Name="PortServerDb" ColumnName="PortServerDb" />
           <ScalarProperty Name="NameCiudade" ColumnName="NameCiudade" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TABedificios">
-      <EntityTypeMapping TypeName="CiudadModel.TABedificios">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABedificios)">
         <MappingFragment StoreEntitySet="TABedificios">
           <ScalarProperty Name="ID_Lat" ColumnName="ID_Lat" />
           <ScalarProperty Name="ID_Lon" ColumnName="ID_Lon" />
@@ -40,7 +40,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TABeventos">
-      <EntityTypeMapping TypeName="CiudadModel.TABeventos">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABeventos)">
         <MappingFragment StoreEntitySet="TABeventos">
           <ScalarProperty Name="ID_Lat" ColumnName="ID_Lat" />
           <ScalarProperty Name="ID_Lon" ColumnName="ID_Lon" />
@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TABsensor">
-      <EntityTypeMapping TypeName="CiudadModel.TABsensor">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABsensor)">
         <MappingFragment StoreEntitySet="TABsensor">
           <ScalarProperty Name="ID_Sen_Lat" ColumnName="ID_Sen_Lat" />
           <ScalarProperty Name="ID_Sen_Lon" ColumnName="ID_Sen_Lon" />
@@ -59,7 +59,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TABsensorEvento">
-      <EntityTypeMapping TypeName="CiudadModel.TABsensorEvento">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABsensorEvento)">
         <MappingFragment StoreEntitySet="TABsensorEvento">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="umbral" ColumnName="umbral" />
@@ -71,18 +71,31 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TABusuarios">
-      <EntityTypeMapping TypeName="CiudadModel.TABusuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABusuarios)">
         <MappingFragment StoreEntitySet="TABusuarios">
+          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="apellido" ColumnName="apellido" />
           <ScalarProperty Name="fechaN" ColumnName="fechaN" />
-          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="pass" ColumnName="pass" />
           <ScalarProperty Name="FK_Edi_Lat" ColumnName="FK_Edi_Lat" />
           <ScalarProperty Name="FK_Edi_Lon" ColumnName="FK_Edi_Lon" />
           <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABZona">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABZona)">
+        <MappingFragment StoreEntitySet="TABZona">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Lat_Zona" ColumnName="Lat_Zona" />
+          <ScalarProperty Name="Lon_Zona" ColumnName="Lon_Zona" />
+          <ScalarProperty Name="Radio_Zona" ColumnName="Radio_Zona" />
+          <ScalarProperty Name="Name_Zona" ColumnName="Name_Zona" />
+          <ScalarProperty Name="Zona_string_extra" ColumnName="Zona_string_extra" />
+          <ScalarProperty Name="Zona_num_extra" ColumnName="Zona_num_extra" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

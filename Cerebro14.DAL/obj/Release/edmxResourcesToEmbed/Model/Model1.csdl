@@ -78,7 +78,7 @@
     <Key>
       <PropertyRef Name="email" />
     </Key>
-    <Property Name="cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedula" Type="Int32" Nullable="false" />
     <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="fechaN" Type="DateTime" Nullable="false" Precision="0" />
@@ -90,6 +90,18 @@
     <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="TABacciones" Relationship="Self.fk_TABusuarios" FromRole="TABusuarios" ToRole="TABacciones" />
     <NavigationProperty Name="TABedificios" Relationship="Self.fk_edificio" FromRole="TABusuarios" ToRole="TABedificios" />
+  </EntityType>
+  <EntityType Name="TABZona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Lat_Zona" Type="Double" Nullable="false" />
+    <Property Name="Lon_Zona" Type="Double" Nullable="false" />
+    <Property Name="Radio_Zona" Type="Double" Nullable="false" />
+    <Property Name="Name_Zona" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Zona_string_extra" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Zona_num_extra" Type="Double" />
   </EntityType>
   <Association Name="fk_TABeventos">
     <End Role="TABeventos" Type="Self.TABeventos" Multiplicity="1" />
@@ -167,6 +179,7 @@
     <EntitySet Name="TABsensor" EntityType="Self.TABsensor" />
     <EntitySet Name="TABsensorEvento" EntityType="Self.TABsensorEvento" />
     <EntitySet Name="TABusuarios" EntityType="Self.TABusuarios" />
+    <EntitySet Name="TABZona" EntityType="Self.TABZona" />
     <AssociationSet Name="fk_TABeventos" Association="Self.fk_TABeventos">
       <End Role="TABeventos" EntitySet="TABeventos" />
       <End Role="TABacciones" EntitySet="TABacciones" />
