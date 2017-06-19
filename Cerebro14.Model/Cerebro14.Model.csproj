@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Accion.cs" />
+    <Compile Include="Auxiliar\AuxEventoAngular.cs" />
     <Compile Include="Auxiliar\AuxZonaAngular.cs" />
     <Compile Include="Auxiliar\AuxSensorAngular.cs" />
     <Compile Include="Ciudad.cs" />

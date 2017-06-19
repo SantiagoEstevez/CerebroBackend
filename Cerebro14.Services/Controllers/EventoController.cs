@@ -40,6 +40,72 @@ namespace Cerebro14.Services.Controllers
             return Json(allEventos);
         }
 
+        [HttpPost, Route("api/Evento/EventoZona")]
+        public IHttpActionResult PostZona(AuxEventoAngular newEvento)
+        {
+            Event newEvent = new Event()
+            {
+                Name = newEvento.Name,
+                Latitude = newEvento.Latitude,
+                Longitude = newEvento.Longitude,
+                Radio = newEvento.Radio
+            };
+
+            Ciudad inCity = new Ciudad()
+            {
+                Nombre = newEvento.ciudad,
+                Latitud = newEvento.Latitude,
+                Longitud = newEvento.Longitude
+            };
+
+            if(newEvento.Radio > 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
+            {
+                return BadRequest();
+            }
+
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            CredentialsDB inCityCred = DBCiudades.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, inCity.Nombre);
+
+            DBEventos.AddEvent(newEvent, inCityCred);
+
+            return Json("Message: Exito");
+        }
+
+        [HttpPost, Route("api/Evento/EventoGlobal")]
+        public IHttpActionResult PostGlobal(AuxEventoAngular newEvento)
+        {
+            Event newEvent = new Event()
+            {
+                Name = newEvento.Name,
+                Latitude = newEvento.Latitude,
+                Longitude = newEvento.Longitude,
+                Radio = newEvento.Radio
+            };
+
+            Ciudad inCity = new Ciudad()
+            {
+                Nombre = newEvento.ciudad,
+                Latitud = newEvento.Latitude,
+                Longitud = newEvento.Longitude
+            };
+
+            if (newEvento.Radio == 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
+            {
+                return BadRequest();
+            }
+
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            CredentialsDB inCityCred = DBCiudades.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, inCity.Nombre);
+
+            DBEventos.AddEvent(newEvent, inCityCred);
+
+            return Json("Message: Exito");
+        }
+
         [HttpGet, Route("api/Evento/Zonas/cityLat/{cityLat}/cityLon/{cityLon}/")]
         public IHttpActionResult Get(double cityLat, double cityLon)
         {
@@ -75,6 +141,11 @@ namespace Cerebro14.Services.Controllers
                 Longitud = newZona.Longitude
             };
             
+            if(!(newEvent.Radio > 0))
+            {
+                return BadRequest();
+            }
+
             IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
             IDALEventos DBEventos = new DALEventos();
 
@@ -84,6 +155,7 @@ namespace Cerebro14.Services.Controllers
 
             return Json("Message: Exito");
         }
+        
 
         // PUT: api/Event/5
         public void Put(int id, [FromBody]string value)
