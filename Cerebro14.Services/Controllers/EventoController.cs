@@ -18,7 +18,7 @@ namespace Cerebro14.Services.Controllers
         {
             IDALEventos dbEve = new DALEventos();
             IDALAsignacionDeRecursos dbRec = new DALAsignacionDeRecursos();
-            
+
             List<Event> allEventos = new List<Event>();
             List<CredentialsDB> lCred = dbRec.GetAllCredencialesCiudad();
 
@@ -28,21 +28,15 @@ namespace Cerebro14.Services.Controllers
                 if (cityEvent.Any())
                 {
                     allEventos.Concat(cityEvent);
-                }                
+                }
             }
-            
+
             if (!allEventos.Any())
             {
                 return NotFound();
             }
 
             return Json(allEventos);
-        }
-
-        [HttpGet, Route("api/Evento/{latitud}/{longitud}/")]
-        public IHttpActionResult Get(double latitud, double longitud)
-        {
-            return Json("Funciono");
         }
 
         [HttpGet, Route("api/Evento/KBZonas/cityLat/{cityLat}/cityLon/{cityLon}/")]
