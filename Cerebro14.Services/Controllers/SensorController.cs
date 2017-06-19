@@ -1,5 +1,6 @@
 ﻿using Cerebro14.DAL;
 using Cerebro14.Model;
+using Cerebro14.Model.Auxiliar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,11 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpPost, Route("api/Sensor")]
-        public IHttpActionResult Post(DataSource newSensor, Ciudad inCity)
+        public IHttpActionResult Post(AuxSensorAngular newDataSource)
         {
+            DataSource newSensor = newDataSource.Sensor;
+            Ciudad inCity = newDataSource.City;
+
             try
             {
                 if (!ModelState.IsValid)
