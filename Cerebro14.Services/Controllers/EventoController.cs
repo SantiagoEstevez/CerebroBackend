@@ -54,8 +54,8 @@ namespace Cerebro14.Services.Controllers
             Ciudad inCity = new Ciudad()
             {
                 Nombre = newEvento.ciudad,
-                Latitud = newEvento.Latitude,
-                Longitud = newEvento.Longitude
+                Latitud = newEvento.cLatitude,
+                Longitud = newEvento.cLongitude
             };
 
             if(newEvento.Radio > 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
@@ -87,8 +87,8 @@ namespace Cerebro14.Services.Controllers
             Ciudad inCity = new Ciudad()
             {
                 Nombre = newEvento.ciudad,
-                Latitud = newEvento.Latitude,
-                Longitud = newEvento.Longitude
+                Latitud = newEvento.cLatitude,
+                Longitud = newEvento.cLongitude
             };
 
             if (newEvento.Radio == 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
@@ -137,8 +137,8 @@ namespace Cerebro14.Services.Controllers
             Ciudad inCity = new Ciudad()
             {
                 Nombre = newZona.ciudad,
-                Latitud = newZona.Latitude,
-                Longitud = newZona.Longitude
+                Latitud = newZona.cLatitude,
+                Longitud = newZona.cLongitude
             };
             
             if(!(newEvent.Radio > 0))
