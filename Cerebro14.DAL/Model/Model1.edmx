@@ -10,6 +10,7 @@
     <EntitySet Name="TABCiudades" EntityType="CiudadModel.Store.TABCiudades" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TABedificios" EntityType="CiudadModel.Store.TABedificios" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TABeventos" EntityType="CiudadModel.Store.TABeventos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TABeventoTipo" EntityType="CiudadModel.Store.TABeventoTipo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TABsensor" EntityType="CiudadModel.Store.TABsensor" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TABsensorEvento" EntityType="CiudadModel.Store.TABsensorEvento" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TABusuarios" EntityType="CiudadModel.Store.TABusuarios" store:Type="Tables" Schema="dbo" />
@@ -79,6 +80,17 @@
     <Property Name="ID_Lat" Type="float" Nullable="false" />
     <Property Name="ID_Lon" Type="float" Nullable="false" />
     <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Radio" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TABeventoTipo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_EvetoT_Lat" Type="float" Nullable="false" />
+    <Property Name="FK_EvetoT_Lon" Type="float" Nullable="false" />
+    <Property Name="umbral" Type="float" Nullable="false" />
+    <Property Name="FK_tipo" Type="varchar" Nullable="false" MaxLength="30" />
   </EntityType>
   <EntityType Name="TABsensor">
     <Key>
@@ -247,8 +259,19 @@
           <Property Name="ID_Lat" Type="Double" Nullable="false" />
           <Property Name="ID_Lon" Type="Double" Nullable="false" />
           <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Radio" Type="Double" Nullable="false" />
           <NavigationProperty Name="TABacciones" Relationship="Self.fk_TABeventos" FromRole="TABeventos" ToRole="TABacciones" />
           <NavigationProperty Name="TABsensorEvento" Relationship="Self.Fk_TABevento" FromRole="TABeventos" ToRole="TABsensorEvento" />
+        </EntityType>
+        <EntityType Name="TABeventoTipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_EvetoT_Lat" Type="Double" Nullable="false" />
+          <Property Name="FK_EvetoT_Lon" Type="Double" Nullable="false" />
+          <Property Name="umbral" Type="Double" Nullable="false" />
+          <Property Name="FK_tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="TABsensor">
           <Key>
@@ -376,6 +399,7 @@
           <EntitySet Name="TABCiudades" EntityType="Self.TABCiudades" />
           <EntitySet Name="TABedificios" EntityType="Self.TABedificios" />
           <EntitySet Name="TABeventos" EntityType="Self.TABeventos" />
+          <EntitySet Name="TABeventoTipo" EntityType="Self.TABeventoTipo" />
           <EntitySet Name="TABsensor" EntityType="Self.TABsensor" />
           <EntitySet Name="TABsensorEvento" EntityType="Self.TABsensorEvento" />
           <EntitySet Name="TABusuarios" EntityType="Self.TABusuarios" />
@@ -451,6 +475,18 @@
           <ScalarProperty Name="ID_Lat" ColumnName="ID_Lat" />
           <ScalarProperty Name="ID_Lon" ColumnName="ID_Lon" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Radio" ColumnName="Radio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TABeventoTipo">
+      <EntityTypeMapping TypeName="IsTypeOf(CiudadModel.TABeventoTipo)">
+        <MappingFragment StoreEntitySet="TABeventoTipo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FK_EvetoT_Lat" ColumnName="FK_EvetoT_Lat" />
+          <ScalarProperty Name="FK_EvetoT_Lon" ColumnName="FK_EvetoT_Lon" />
+          <ScalarProperty Name="umbral" ColumnName="umbral" />
+          <ScalarProperty Name="FK_tipo" ColumnName="FK_tipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -521,7 +557,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="False" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

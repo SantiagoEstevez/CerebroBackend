@@ -104,6 +104,9 @@
     <Compile Include="Model\TABeventos.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TABeventoTipo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TABsensor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

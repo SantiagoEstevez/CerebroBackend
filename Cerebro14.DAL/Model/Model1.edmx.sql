@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/18/2017 17:28:47
+-- Date Created: 06/19/2017 00:45:10
 -- Generated from EDMX file: C:\Users\amancebo\Desktop\Fing\TSI_Cerebro14\CerebroBackend\Cerebro14.DAL\Model\Model1.edmx
 -- --------------------------------------------------
 
@@ -48,6 +48,9 @@ IF OBJECT_ID(N'[dbo].[TABedificios]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TABeventos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TABeventos];
+GO
+IF OBJECT_ID(N'[dbo].[TABeventoTipo]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TABeventoTipo];
 GO
 IF OBJECT_ID(N'[dbo].[TABsensor]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TABsensor];
@@ -105,7 +108,18 @@ GO
 CREATE TABLE [dbo].[TABeventos] (
     [ID_Lat] float  NOT NULL,
     [ID_Lon] float  NOT NULL,
-    [nombre] varchar(30)  NOT NULL
+    [nombre] varchar(30)  NOT NULL,
+    [Radio] float  NOT NULL
+);
+GO
+
+-- Creating table 'TABeventoTipo'
+CREATE TABLE [dbo].[TABeventoTipo] (
+    [id] int IDENTITY(1,1) NOT NULL,
+    [FK_EvetoT_Lat] float  NOT NULL,
+    [FK_EvetoT_Lon] float  NOT NULL,
+    [umbral] float  NOT NULL,
+    [FK_tipo] varchar(30)  NOT NULL
 );
 GO
 
@@ -182,6 +196,12 @@ GO
 ALTER TABLE [dbo].[TABeventos]
 ADD CONSTRAINT [PK_TABeventos]
     PRIMARY KEY CLUSTERED ([ID_Lat], [ID_Lon] ASC);
+GO
+
+-- Creating primary key on [id] in table 'TABeventoTipo'
+ALTER TABLE [dbo].[TABeventoTipo]
+ADD CONSTRAINT [PK_TABeventoTipo]
+    PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
 -- Creating primary key on [ID_Sen_Lat], [ID_Sen_Lon] in table 'TABsensor'

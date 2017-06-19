@@ -15,14 +15,13 @@ namespace Cerebro14.DAL.Model
     
     public partial class CiudadEntities : DbContext
     {
-        /*
-        public CiudadEntities()
-            : base("name=CiudadEntities")
-        {
-        }
-    */
+        //public CiudadEntities()
+        //    : base("name=CiudadEntities")
+        //{
+        //}
+
         public CiudadEntities(string connStringName)
-    : base("name=" + connStringName)
+            : base("name=" + connStringName)
         {
         }
 
@@ -35,6 +34,7 @@ namespace Cerebro14.DAL.Model
         public virtual DbSet<TABCiudades> TABCiudades { get; set; }
         public virtual DbSet<TABedificios> TABedificios { get; set; }
         public virtual DbSet<TABeventos> TABeventos { get; set; }
+        public virtual DbSet<TABeventoTipo> TABeventoTipo { get; set; }
         public virtual DbSet<TABsensor> TABsensor { get; set; }
         public virtual DbSet<TABsensorEvento> TABsensorEvento { get; set; }
         public virtual DbSet<TABusuarios> TABusuarios { get; set; }

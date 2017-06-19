@@ -21,6 +21,7 @@ namespace Cerebro14.DAL
                 _dbeve.nombre = e.Name;
                 _dbeve.ID_Lat = e.Latitude;
                 _dbeve.ID_Lon = e.Longitude;
+                _dbeve.Radio = e.Radio;
                 try
                 {
                     db.TABeventos.Add(_dbeve);
@@ -45,6 +46,7 @@ namespace Cerebro14.DAL
                     acc.Name = item.nombre;
                     acc.Latitude = item.ID_Lat;
                     acc.Longitude = item.ID_Lon;
+                    acc.Radio = item.Radio;
                     lista.Add(acc);
                 }
                 return lista;

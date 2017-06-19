@@ -24,6 +24,7 @@ namespace Cerebro14.DAL.Model
         public double ID_Lat { get; set; }
         public double ID_Lon { get; set; }
         public string nombre { get; set; }
+        public double Radio { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TABacciones> TABacciones { get; set; }
