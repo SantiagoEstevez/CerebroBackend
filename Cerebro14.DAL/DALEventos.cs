@@ -54,7 +54,7 @@ namespace Cerebro14.DAL
             }
             catch (Exception e)
             {
-                Console.WriteLine("No se pudo devolver los eventos de la ciudad");
+                Console.WriteLine("No se pudo devolver los eventos de la ciudad " + e.Message);
                 return new List<Event>();
             }
         }

@@ -36,14 +36,30 @@ namespace Cerebro14.DAL
                     cred.UserDb = _ciud.UserDb;
 
                     lista.Add(cred);
-
                 }
                 return lista;
-
             }
-
-
         }
+        
+        public bool ExistCredencialCiudad(double lat, double lon, string nom = "")
+        {
+            try
+            {
+                bool ret = false;
+                using (CiudadEntities db = new CiudadEntities("Ciudad01"))
+                {
+                    var lCiudades = db.TABCiudades.Where(x => x.ID_Ciu_Lat == lat && x.ID_Ciu_Lon == lon).ToList();
+                    ret = lCiudades.Any();
+                }
+                return ret;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("No se pudo controlar la existencia de la ciudad: " + e.Message);
+                return false;
+            }
+        }
+
         public CredentialsDB GetCredencialesCiudad(double Lat, double Lon, string nom)
         {
             try

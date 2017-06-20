@@ -11,6 +11,7 @@ namespace Cerebro14.DAL
     public interface IDALAsignacionDeRecursos
     {
         CredentialsDB GetCredencialesCiudad(double Lat, double Lon,string nom);
+        bool ExistCredencialCiudad(double lat, double lon, string nom = "");
         void SetCredencialesCiudad(CredentialsDB cre, string nam);
         List<CredentialsDB> GetAllCredencialesCiudad();
     }

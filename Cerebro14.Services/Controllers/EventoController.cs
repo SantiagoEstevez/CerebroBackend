@@ -45,6 +45,11 @@ namespace Cerebro14.Services.Controllers
         {
             IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
             IDALEventos DBEventos = new DALEventos();
+            
+            if(!DBCiudades.ExistCredencialCiudad(cityLat, cityLon))
+            {
+                return BadRequest();
+            }
 
             CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
             List<Event> cityEvent = DBEventos
