@@ -40,6 +40,53 @@ namespace Cerebro14.Services.Controllers
             return Json(allEventos);
         }
 
+        [HttpGet, Route("api/Evento/Zone/cityLat/{cityLat}/cityLon/{cityLon}/")]
+        public IHttpActionResult GetAllZoneEventInCity(double cityLat, double cityLon)
+        {
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
+            List<Event> cityEvent = DBEventos
+                                    .GetAllEvent(city)
+                                    .Where(x => x.Radio == 0)
+                                    .ToList();
+                        
+            List<Event> cityZones = DBEventos
+                                    .GetAllEvent(city)
+                                    .Where(x => x.Radio > 0)
+                                    .ToList();
+
+            List<Event> ret = new List<Event>();
+            foreach(var zone in cityZones)
+            {
+                ret.Concat(cityEvent
+                            .Where(x => EventLogic.EventIsInsideZone(zone, x))
+                            .ToList())
+                            .Distinct();
+            }
+
+            return Json(ret);
+        }
+
+        [HttpGet, Route("api/Evento/Zone/cityLat/{cityLat}/cityLon/{cityLon}/zoneLat/{zoneLat}/zoneLon/{zoneLon}/zoneRad/{zoneRad}/")]
+        public IHttpActionResult GetZoneEventInCity(double cityLat, double cityLon, double zoneLat, double zoneLon, double zoneRad)
+        {
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
+            List<Event> cityEvent = DBEventos.GetAllEvent(city).Where(x => x.Radio > 0).ToList();
+
+            return Json(cityEvent);
+        }
+
+        [HttpGet, Route("api/Evento/Global/cityLat/{cityLat}/cityLon/{cityLon}/")]
+        public IHttpActionResult GetGlobalEventInCity(double cityLat, double cityLon)
+        {
+            throw new NotImplementedException();
+        }
+
         [HttpPost, Route("api/Evento/EventoZona")]
         public IHttpActionResult PostZona(AuxEventoAngular newEvento)
         {

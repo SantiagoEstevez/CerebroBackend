@@ -44,15 +44,12 @@ namespace Cerebro14.DAL
 
 
         }
-        public CredentialsDB GetCredencialesCiudad(double Lat, double Lon, string nom) {
-
+        public CredentialsDB GetCredencialesCiudad(double Lat, double Lon, string nom)
+        {
             try
             {
                 using (CiudadEntities dbr = new CiudadEntities("Ciudad01"))
                 {
-                    //CiudadEntities dbr;
-                    //dbr  = new CiudadEntities("Ciudad01");
-
                     CredentialsDB cred = new CredentialsDB();
 
                     if (dbr.TABCiudades.Any(c => (c.ID_Ciu_Lat == Lat && c.ID_Ciu_Lon == Lon)))
@@ -114,9 +111,9 @@ namespace Cerebro14.DAL
             catch(Exception e)
             {                
                 return null;
-            }
- 
+            } 
         }
+
         public void SetCredencialesCiudad(CredentialsDB cre, string nam)
         {
             using (CiudadEntities dbr = new CiudadEntities("Ciudad01"))
