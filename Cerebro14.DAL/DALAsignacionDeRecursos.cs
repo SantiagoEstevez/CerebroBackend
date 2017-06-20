@@ -109,7 +109,8 @@ namespace Cerebro14.DAL
                 }
             }
             catch(Exception e)
-            {                
+            {
+                Console.WriteLine("Error: " + e.Message);
                 return null;
             } 
         }

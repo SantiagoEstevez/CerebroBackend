@@ -1,5 +1,4 @@
 ﻿using Cerebro14.Model;
-using GeoCoordinatePortable;
 using System;
 using System.Collections.Generic;
 using System.Linq;
