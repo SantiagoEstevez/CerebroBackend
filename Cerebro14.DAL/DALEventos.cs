@@ -35,21 +35,27 @@ namespace Cerebro14.DAL
         }
 
         public List<Event> GetAllEvent(CredentialsDB creden) {
-
-            //CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
-            using (CiudadEntities db = new CiudadEntities(creden.NameDbSQL))
+            try
             {
-                List<Event> lista = new List<Event>();
-                foreach (var item in db.TABeventos.ToList())
+                using (CiudadEntities db = new CiudadEntities(creden.NameDbSQL))
                 {
-                    Event acc = new Event();
-                    acc.Name = item.nombre;
-                    acc.Latitude = item.ID_Lat;
-                    acc.Longitude = item.ID_Lon;
-                    acc.Radio = item.Radio;
-                    lista.Add(acc);
+                    List<Event> lista = new List<Event>();
+                    foreach (var item in db.TABeventos.ToList())
+                    {
+                        Event acc = new Event();
+                        acc.Name = item.nombre;
+                        acc.Latitude = item.ID_Lat;
+                        acc.Longitude = item.ID_Lon;
+                        acc.Radio = item.Radio;
+                        lista.Add(acc);
+                    }
+                    return lista;
                 }
-                return lista;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("No se pudo devolver los eventos de la ciudad");
+                return new List<Event>();
             }
         }
 

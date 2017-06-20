@@ -114,11 +114,6 @@ namespace Cerebro14.Services.Controllers
 
             CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
             List<Event> cityEvent = DBEventos.GetAllEvent(city).Where(x => x.Radio > 0).ToList();
-            
-            //if (!cityEvent.Any())
-            //{
-            //    return NotFound();
-            //}
 
             return Json(cityEvent);
         }

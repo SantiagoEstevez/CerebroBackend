@@ -45,69 +45,77 @@ namespace Cerebro14.DAL
 
         }
         public CredentialsDB GetCredencialesCiudad(double Lat, double Lon, string nom) {
-            using (CiudadEntities dbr = new CiudadEntities("Ciudad01"))
+
+            try
             {
-                //CiudadEntities dbr;
-                //dbr  = new CiudadEntities("Ciudad01");
-
-                CredentialsDB cred = new CredentialsDB();
-
-                if (dbr.TABCiudades.Any(c => (c.ID_Ciu_Lat == Lat && c.ID_Ciu_Lon == Lon)))
+                using (CiudadEntities dbr = new CiudadEntities("Ciudad01"))
                 {
-                    var Ciudad = from c in dbr.TABCiudades
-                                 where (c.ID_Ciu_Lat == Lat && c.ID_Ciu_Lon == Lon)
-                                 select c;
+                    //CiudadEntities dbr;
+                    //dbr  = new CiudadEntities("Ciudad01");
 
-                    foreach (var _ciud in Ciudad)
+                    CredentialsDB cred = new CredentialsDB();
+
+                    if (dbr.TABCiudades.Any(c => (c.ID_Ciu_Lat == Lat && c.ID_Ciu_Lon == Lon)))
                     {
-                        cred.AddressServerDb = _ciud.AddressServerDb;
-                        cred.Ciudad_Lat = _ciud.ID_Ciu_Lat;
-                        cred.Ciudad_Lon = _ciud.ID_Ciu_Lon;
-                        cred.NameCiudad = _ciud.NameCiudade;
-                        cred.NameDbM = _ciud.NameDbM;
-                        cred.NameDbSQL = _ciud.NameDbSQL;
-                        cred.PassDb = _ciud.PassDb;
-                        cred.PortServerDb = _ciud.PortServerDb;
-                        cred.UserDb = _ciud.UserDb;
+                        var Ciudad = from c in dbr.TABCiudades
+                                     where (c.ID_Ciu_Lat == Lat && c.ID_Ciu_Lon == Lon)
+                                     select c;
+
+                        foreach (var _ciud in Ciudad)
+                        {
+                            cred.AddressServerDb = _ciud.AddressServerDb;
+                            cred.Ciudad_Lat = _ciud.ID_Ciu_Lat;
+                            cred.Ciudad_Lon = _ciud.ID_Ciu_Lon;
+                            cred.NameCiudad = _ciud.NameCiudade;
+                            cred.NameDbM = _ciud.NameDbM;
+                            cred.NameDbSQL = _ciud.NameDbSQL;
+                            cred.PassDb = _ciud.PassDb;
+                            cred.PortServerDb = _ciud.PortServerDb;
+                            cred.UserDb = _ciud.UserDb;
 
                         }
 
+                    }
+                    else
+                    {
+                        var Ciudad = from c in dbr.TABCiudades
+                                     where (c.RecursoLibre == 0.0)
+                                     select c;
+
+
+                        TABCiudades _nuevaCred, _ciud;
+                        _nuevaCred = new TABCiudades();
+                        TABCiudades aborrar;
+                        _ciud = Ciudad.First();
+
+                        _nuevaCred.AddressServerDb = _ciud.AddressServerDb;
+                        _nuevaCred.RecursoLibre = 1.0;
+                        _nuevaCred.ID_Ciu_Lat = Lat;
+                        _nuevaCred.ID_Ciu_Lon = Lon;
+                        _nuevaCred.NameCiudade = nom;
+                        _nuevaCred.NameDbM = _ciud.NameDbM;
+                        _nuevaCred.NameDbSQL = _ciud.NameDbSQL;
+                        _nuevaCred.PassDb = _ciud.PassDb;
+                        _nuevaCred.PortServerDb = _ciud.PortServerDb;
+                        _nuevaCred.UserDb = _ciud.UserDb;
+
+                        aborrar = dbr.TABCiudades.Find(_ciud.id);
+                        dbr.TABCiudades.Add(_nuevaCred);
+                        dbr.SaveChanges();
+
+                        dbr.TABCiudades.Remove(aborrar);
+                        dbr.SaveChanges();
+
+
+                    }
+                    return cred;
                 }
-                else
-                {
-                    var Ciudad = from c in dbr.TABCiudades
-                                 where (c.RecursoLibre == 0.0)
-                                 select c;
-
-
-                    TABCiudades _nuevaCred, _ciud;
-                    _nuevaCred = new TABCiudades();
-                    TABCiudades aborrar;
-                    _ciud = Ciudad.First();
-
-                    _nuevaCred.AddressServerDb = _ciud.AddressServerDb;
-                    _nuevaCred.RecursoLibre = 1.0;
-                    _nuevaCred.ID_Ciu_Lat = Lat;
-                    _nuevaCred.ID_Ciu_Lon = Lon;
-                    _nuevaCred.NameCiudade = nom;
-                    _nuevaCred.NameDbM = _ciud.NameDbM;
-                    _nuevaCred.NameDbSQL = _ciud.NameDbSQL;
-                    _nuevaCred.PassDb = _ciud.PassDb;
-                    _nuevaCred.PortServerDb = _ciud.PortServerDb;
-                    _nuevaCred.UserDb = _ciud.UserDb;
-
-                    aborrar = dbr.TABCiudades.Find(_ciud.id);
-                    dbr.TABCiudades.Add(_nuevaCred);
-                    dbr.SaveChanges();
-
-                    dbr.TABCiudades.Remove(aborrar);
-                    dbr.SaveChanges();
-
-
-                }
-                return cred;
-
             }
+            catch(Exception e)
+            {                
+                return null;
+            }
+ 
         }
         public void SetCredencialesCiudad(CredentialsDB cre, string nam)
         {
