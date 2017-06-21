@@ -46,11 +46,12 @@ namespace Cerebro14.Services.Controllers
             if (user.Username == "test" && user.Password == "test")
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
-            
+
         }
 
         public static string GenerateToken(string username, int expireMinutes = 20)
