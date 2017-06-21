@@ -27,5 +27,10 @@ namespace Cerebro14.DAL
 
         //void DeleteActionFromUser(int , CredentialsDB creden);
 
+
+
+
+
+        void AddActionToEvent(Accion accion, double eventoLatitud, double eventoLongitud, CredentialsDB ciudad);
     }
 }

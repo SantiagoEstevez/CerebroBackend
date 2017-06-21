@@ -76,7 +76,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpPost, Route("api/Evento/EventoZona")]
-        public IHttpActionResult PostZona(AuxEventoAngular newEvento)
+        public IHttpActionResult PostZoneEvent(AuxEventoAngular newEvento)
         {
             Event newEvent = new Event()
             {

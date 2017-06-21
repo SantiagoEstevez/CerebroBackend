@@ -190,5 +190,26 @@ namespace Cerebro14.DAL
         {
             throw new NotImplementedException();
         }
+
+
+
+        public void AddActionToEvent(Accion accion, double eventoLatitud, double eventoLongitud, CredentialsDB ciudad)
+        {
+            using (CiudadEntities db = new CiudadEntities(ciudad.NameDbSQL))
+            {
+                TABacciones newAccion = new TABacciones()
+                {
+                    id = 0,
+                    FK_Eve_Lat = eventoLatitud,
+                    FK_Eve_Lon = eventoLongitud,
+                    FK_email_usu = accion.usuario.ToString(),
+                    parametros = accion.Parametro,
+                    tipo = accion.Tipo
+                };
+
+                db.TABacciones.Add(newAccion);
+                db.SaveChanges();
+            }
+        }
     }
 }
