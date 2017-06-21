@@ -15,7 +15,7 @@ namespace Cerebro14.Services.Controllers
     public class EventoController : ApiController
     {
         [HttpGet, Route("api/Evento")]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetAllEventsAndZones()
         {
             IDALEventos dbEve = new DALEventos();
             IDALAsignacionDeRecursos dbRec = new DALAsignacionDeRecursos();
@@ -32,16 +32,11 @@ namespace Cerebro14.Services.Controllers
                 }
             }
 
-            //if (!allEventos.Any())
-            //{
-            //    return NotFound();
-            //}
-
             return Json(allEventos);
         }
 
         [HttpGet, Route("api/Evento/Zone/cityLat/{cityLat}/cityLon/{cityLon}/")]
-        public IHttpActionResult GetAllZoneEventInCity(double cityLat, double cityLon)
+        public IHttpActionResult GetAllZoneEvents(double cityLat, double cityLon)
         {
             IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
             IDALEventos DBEventos = new DALEventos();
@@ -54,7 +49,7 @@ namespace Cerebro14.Services.Controllers
             CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
             List<Event> cityEvent = DBEventos
                                     .GetAllEvent(city)
-                                    .Where(x => x.Radio == 0)
+                                    .Where(x => x.Latitude != 0 && x.Radio == 0)
                                     .ToList();
                         
             List<Event> cityZones = DBEventos
@@ -75,19 +70,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpGet, Route("api/Evento/Zone/cityLat/{cityLat}/cityLon/{cityLon}/zoneLat/{zoneLat}/zoneLon/{zoneLon}/zoneRad/{zoneRad}/")]
-        public IHttpActionResult GetZoneEventInCity(double cityLat, double cityLon, double zoneLat, double zoneLon, double zoneRad)
-        {
-            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
-            IDALEventos DBEventos = new DALEventos();
-
-            CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
-            List<Event> cityEvent = DBEventos.GetAllEvent(city).Where(x => x.Radio > 0).ToList();
-
-            return Json(cityEvent);
-        }
-
-        [HttpGet, Route("api/Evento/Global/cityLat/{cityLat}/cityLon/{cityLon}/")]
-        public IHttpActionResult GetGlobalEventInCity(double cityLat, double cityLon)
+        public IHttpActionResult GetZoneEvent(double cityLat, double cityLon, double zoneLat, double zoneLon, double zoneRad)
         {
             throw new NotImplementedException();
         }
@@ -110,7 +93,7 @@ namespace Cerebro14.Services.Controllers
                 Longitud = newEvento.cLongitude
             };
 
-            if(newEvento.Radio > 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
+            if (newEvento.Radio > 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
             {
                 return BadRequest();
             }
@@ -123,6 +106,29 @@ namespace Cerebro14.Services.Controllers
             DBEventos.AddEvent(newEvent, inCityCred);
 
             return Json("Message: Exito");
+        }
+
+        [HttpGet, Route("api/Evento/Global/cityLat/{cityLat}/cityLon/{cityLon}/")]
+        public IHttpActionResult GetAllGlobalEvents(double cityLat, double cityLon)
+        {
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            if(!DBCiudades.ExistCredencialCiudad(cityLat, cityLon))
+            {
+                return BadRequest();
+            }
+
+            CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
+            List<Event> allGlobalEvents = DBEventos.GetAllEvent(city).Where(x => x.Latitude == 0 && x.Radio == 0).ToList();
+            
+            return Json(allGlobalEvents);
+        }
+
+        [HttpGet, Route("api/Evento/Global/cityLat/{cityLat}/cityLon/{cityLon}/zoneLat/{zoneLat}/zoneLon/{zoneLon}/zoneRad/{zoneRad}/")]
+        public IHttpActionResult GetGlobalEvent(double cityLat, double cityLon, double zoneLat, double zoneLon, double zoneRad)
+        {
+            throw new NotImplementedException();
         }
 
         [HttpPost, Route("api/Evento/EventoGlobal")]
@@ -159,7 +165,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpGet, Route("api/Evento/Zona/cityLat/{cityLat}/cityLon/{cityLon}/")]
-        public IHttpActionResult Get(double cityLat, double cityLon)
+        public IHttpActionResult GetAllZones (double cityLat, double cityLon)
         {
             IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
             IDALEventos DBEventos = new DALEventos();
@@ -171,7 +177,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpPost, Route("api/Evento/Zona")]
-        public IHttpActionResult Post(AuxZonaAngular newZona)
+        public IHttpActionResult PostZone(AuxZonaAngular newZona)
         {
             Event newEvent = new Event()
             {

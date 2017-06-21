@@ -48,7 +48,7 @@ namespace Cerebro14.DAL
                 bool ret = false;
                 using (CiudadEntities db = new CiudadEntities("Ciudad01"))
                 {
-                    var lCiudades = db.TABCiudades.Where(x => x.ID_Ciu_Lat == lat && x.ID_Ciu_Lon == lon).ToList();
+                    var lCiudades = db.TABCiudades.Where(x => x.ID_Ciu_Lat == lat && x.ID_Ciu_Lon == lon && x.RecursoLibre == 1).ToList();
                     ret = lCiudades.Any();
                 }
                 return ret;
