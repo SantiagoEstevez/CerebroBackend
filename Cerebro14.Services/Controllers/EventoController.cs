@@ -107,13 +107,10 @@ namespace Cerebro14.Services.Controllers
             foreach(var sensor in newEvento.SendoresAsociados)
             {
                 DBEventoSensor.CreateAction(newEvent.Latitude, newEvent.Longitude, sensor.Latitude, sensor.Longitude, double.Parse(sensor.Umbral), sensor.Tipo, inCityCred);
-            }
+            }            
 
-            
             DBEventos.AddEvent(newEvent, inCityCred);
-
-
-
+            
             return Json("Message: Exito");
         }
 
@@ -167,6 +164,12 @@ namespace Cerebro14.Services.Controllers
             IDALEventos DBEventos = new DALEventos();
 
             CredentialsDB inCityCred = DBCiudades.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, inCity.Nombre);
+
+            IDALEventoSensor DBEventoSensor = new DALEventoSensor();
+            foreach (var sensor in newEvento.SendoresAsociados)
+            {
+                DBEventoSensor.CreateAction(newEvent.Latitude, newEvent.Longitude, sensor.Latitude, sensor.Longitude, double.Parse(sensor.Umbral), sensor.Tipo, inCityCred);
+            }
 
             DBEventos.AddEvent(newEvent, inCityCred);
 
