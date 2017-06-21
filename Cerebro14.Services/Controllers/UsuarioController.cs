@@ -26,9 +26,9 @@ namespace Cerebro14.Services.Controllers
         [HttpPost, Route("api/Usuario/Login")]
         public IHttpActionResult LoginBackend(User user)
         {
-            user = new User();
-            user.Password = "asasd";
-            user.Username = "nombre";
+            //user = new User();
+            //user.Password = "asasd";
+            //user.Username = "nombre";
 
             //return Json(CiudadHelper.CreateToken24hrs());
             //return Json(GenerateToken("asasaasasasaa"));
@@ -43,7 +43,14 @@ namespace Cerebro14.Services.Controllers
         public bool CheckUser(User user)
         {
             // should check in the database
-            return true;
+            if (user.Username == "test" && user.Password == "test")
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+            
         }
 
         public static string GenerateToken(string username, int expireMinutes = 20)
