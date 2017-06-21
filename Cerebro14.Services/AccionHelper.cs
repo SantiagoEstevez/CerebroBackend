@@ -5,7 +5,8 @@ using System.Web;
 
 namespace Cerebro14.Services
 {
-    public class AccionHelper
+    public static class AccionHelper
     {
+        
     }
 }
