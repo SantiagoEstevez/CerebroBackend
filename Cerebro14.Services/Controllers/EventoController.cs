@@ -28,7 +28,10 @@ namespace Cerebro14.Services.Controllers
                 var cityEvent = dbEve.GetAllEvent(cred);
                 if (cityEvent.Any())
                 {
-                    allEventos.Concat(cityEvent);
+                    foreach(var evento in cityEvent)
+                    {
+                        allEventos.Add(evento);
+                    }                    
                 }
             }
 
