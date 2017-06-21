@@ -131,7 +131,7 @@ namespace Cerebro14.Services.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpPost, Route("api/Evento/Evento/Global")]
+        [HttpPost, Route("api/Evento/Global")]
         public IHttpActionResult PostGlobal(AuxEventoAngular newEvento)
         {
             Event newEvent = new Event()
