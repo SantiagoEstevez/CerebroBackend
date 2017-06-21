@@ -10,7 +10,7 @@ namespace Cerebro14.DAL
 {
     public interface IDALEventoSensor
     {
-        void CreateAction(double Lat_event, double Lon_event, double Lat_sen, double Lon_sen, double umbral,  CredentialsDB creden);
+        void CreateAction(double Lat_event, double Lon_event, double Lat_sen, double Lon_sen, double umbral, string tipo, CredentialsDB creden);
 
         List<Event> GetAllEventFromSensor(double Lat_sen, double Lon_sen, CredentialsDB creden);
 

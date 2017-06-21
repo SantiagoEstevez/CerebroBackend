@@ -9,9 +9,9 @@ using Cerebro14.Model.SensorTypes;
 
 namespace Cerebro14.DAL
 {
-    class DALEventoSensor : IDALEventoSensor
+    public class DALEventoSensor : IDALEventoSensor
     {
-        public void CreateAction(double Lat_event, double Lon_event, double Lat_sen, double Lon_sen, double umbral, CredentialsDB creden)
+        public void CreateAction(double Lat_event, double Lon_event, double Lat_sen, double Lon_sen, double umbral, string tipo, CredentialsDB creden)
         {
             //CiudadEntities db = new CiudadEntities(creden.NameDbSQL);
             using (CiudadEntities db = new CiudadEntities(creden.NameDbSQL))

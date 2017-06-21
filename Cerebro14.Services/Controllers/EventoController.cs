@@ -100,10 +100,19 @@ namespace Cerebro14.Services.Controllers
 
             IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
             IDALEventos DBEventos = new DALEventos();
+            IDALEventoSensor DBEventoSensor = new DALEventoSensor();
 
             CredentialsDB inCityCred = DBCiudades.GetCredencialesCiudad(inCity.Latitud, inCity.Longitud, inCity.Nombre);
 
+            foreach(var sensor in newEvento.SendoresAsociados)
+            {
+                DBEventoSensor.CreateAction(newEvent.Latitude, newEvent.Longitude, sensor.Latitude, sensor.Longitude, double.Parse(sensor.Umbral), sensor.Tipo, inCityCred);
+            }
+
+            
             DBEventos.AddEvent(newEvent, inCityCred);
+
+
 
             return Json("Message: Exito");
         }
@@ -149,7 +158,7 @@ namespace Cerebro14.Services.Controllers
                 Longitud = newEvento.cLongitude
             };
 
-            if (newEvento.Radio == 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
+            if (!(newEvento.Radio == 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0))
             {
                 return BadRequest();
             }
