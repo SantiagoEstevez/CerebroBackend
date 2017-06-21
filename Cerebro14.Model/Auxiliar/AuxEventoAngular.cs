@@ -19,6 +19,7 @@ namespace Cerebro14.Model.Auxiliar
         public double Longitude { get; set; }
         public double Radio { get; set; }
 
-        public List<DataSource> SendoresAsociados { get; set; }
+        //public List<DataSource> SendoresAsociados { get; set; }
+        public DataSource[] SendoresAsociados { get; set; }
     }
 }
