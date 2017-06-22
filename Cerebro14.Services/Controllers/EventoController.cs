@@ -79,7 +79,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpPost, Route("api/Evento/EventoZona")]
-        public IHttpActionResult PostZoneEvent(AuxEventoAngular newEvento)
+        public IHttpActionResult PostZoneEvent([FromBody] AuxEventoAngular newEvento)
         {
             Event newEvent = new Event()
             {
@@ -141,7 +141,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpPost, Route("api/Evento/Global")]
-        public IHttpActionResult PostGlobal(AuxEventoAngular newEvento)
+        public IHttpActionResult PostGlobal([FromBody] AuxEventoAngular newEvento)
         {
             Event newEvent = new Event()
             {
@@ -192,7 +192,7 @@ namespace Cerebro14.Services.Controllers
         }
 
         [HttpPost, Route("api/Evento/Zona")]
-        public IHttpActionResult PostZone(AuxZonaAngular newZona)
+        public IHttpActionResult PostZone([FromBody] AuxZonaAngular newZona)
         {
             Event newEvent = new Event()
             {

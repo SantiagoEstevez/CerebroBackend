@@ -1,9 +1,9 @@
 ﻿using Cerebro14.DAL;
 using Cerebro14.Model;
-using Microsoft.IdentityModel.Tokens;
+//using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
+//using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -23,22 +23,22 @@ namespace Cerebro14.Services.Controllers
         //-------------------------> Manejo del token de autenticacion. <-------------------------
         public const string Secret = "856FECBA3B06519C8DDDBC80BB080553"; // your symmetric
 
-        [HttpPost, Route("api/Usuario/Login")]
-        public IHttpActionResult LoginBackend(User user)
-        {
-            //user = new User();
-            //user.Password = "asasd";
-            //user.Username = "nombre";
+        //[HttpPost, Route("api/Usuario/Login")]
+        //public IHttpActionResult LoginBackend(User user)
+        //{
+        //user = new User();
+        //user.Password = "asasd";
+        //user.Username = "nombre";
 
-            //return Json(CiudadHelper.CreateToken24hrs());
-            //return Json(GenerateToken("asasaasasasaa"));
-            if (CheckUser(user))
-            {
-                return Json(GenerateToken(user.Username));
-            }
+        //return Json(CiudadHelper.CreateToken24hrs());
+        //return Json(GenerateToken("asasaasasasaa"));
+        //if (CheckUser(user))
+        //{
+        //    return Json(GenerateToken(user.Username));
+        //}
 
-            throw new HttpResponseException(HttpStatusCode.Unauthorized);
-        }
+        //throw new HttpResponseException(HttpStatusCode.Unauthorized);
+        //}
 
         public bool CheckUser(User user)
         {
@@ -54,29 +54,29 @@ namespace Cerebro14.Services.Controllers
 
         }
 
-        public static string GenerateToken(string username, int expireMinutes = 20)
-        {
-            var symmetricKey = Convert.FromBase64String(Secret);
-            var tokenHandler = new JwtSecurityTokenHandler();
+        //public static string GenerateToken(string username, int expireMinutes = 20)
+        //{
+        //    var symmetricKey = Convert.FromBase64String(Secret);
+        //    var tokenHandler = new JwtSecurityTokenHandler();
 
-            var now = DateTime.UtcNow;
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                        {
-                        new Claim(ClaimTypes.Name, username)
-                    }),
+        //    var now = DateTime.UtcNow;
+        //    var tokenDescriptor = new SecurityTokenDescriptor
+        //    {
+        //        Subject = new ClaimsIdentity(new[]
+        //                {
+        //                new Claim(ClaimTypes.Name, username)
+        //            }),
 
-                Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
+        //        Expires = now.AddMinutes(Convert.ToInt32(expireMinutes)),
 
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature)
-            };
+        //        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(symmetricKey), SecurityAlgorithms.HmacSha256Signature)
+        //    };
 
-            var stoken = tokenHandler.CreateToken(tokenDescriptor);
-            var token = tokenHandler.WriteToken(stoken);
+        //    var stoken = tokenHandler.CreateToken(tokenDescriptor);
+        //    var token = tokenHandler.WriteToken(stoken);
 
-            return token;
-        }
+        //    return token;
+        //}
         //[JwtAuthentication]
         //-------------------------> Fin Manejo del token de autenticacion. <-------------------------
 
