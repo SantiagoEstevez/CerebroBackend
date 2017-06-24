@@ -96,7 +96,7 @@ namespace Cerebro14.Services.Controllers
                 Longitud = newEvento.cLongitude
             };
 
-            if (newEvento.Radio > 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
+            if (newEvento.Radio != 0 || newEvento.Latitude == 0 || newEvento.Longitude == 0)
             {
                 return BadRequest();
             }
