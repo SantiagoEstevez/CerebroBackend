@@ -78,7 +78,7 @@ namespace Cerebro14.Services.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpPost, Route("api/Evento/EventoZona")]
+        [HttpPost, Route("api/Evento/Zone")]
         public IHttpActionResult PostZoneEvent([FromBody] AuxEventoAngular newEvento)
         {
             Event newEvent = new Event()
