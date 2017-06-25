@@ -75,7 +75,38 @@ namespace Cerebro14.Services.Controllers
         [HttpGet, Route("api/Evento/Zone/cityLat/{cityLat}/cityLon/{cityLon}/zoneLat/{zoneLat}/zoneLon/{zoneLon}/zoneRad/{zoneRad}/")]
         public IHttpActionResult GetZoneEvent(double cityLat, double cityLon, double zoneLat, double zoneLon, double zoneRad)
         {
-            throw new NotImplementedException();
+            IDALAsignacionDeRecursos DBCiudades = new DALAsignacionDeRecursos();
+            IDALEventos DBEventos = new DALEventos();
+
+            if (!DBCiudades.ExistCredencialCiudad(cityLat, cityLon))
+            {
+                return BadRequest();
+            }
+
+            Event zone = new Event()
+            {
+                Latitude = zoneLat,
+                Longitude = zoneLon,
+                Radio = zoneRad
+            };
+
+            CredentialsDB city = DBCiudades.GetCredencialesCiudad(cityLat, cityLon, "");
+
+            List<Event> allEvents = DBEventos.GetAllEvent(city)
+                                    .Where(x => x.Latitude != 0 && x.Radio == 0)
+                                    .ToList();
+
+            List<Event> ret = new List<Event>();
+
+            foreach (var eve in allEvents)
+            {
+                if(EventLogic.EventIsInsideZone(zone, eve))
+                {
+                    ret.Add(eve);
+                }
+            }
+
+            return Json(ret);
         }
 
         [HttpPost, Route("api/Evento/Zone")]
